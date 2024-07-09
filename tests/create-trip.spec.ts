@@ -53,7 +53,7 @@ describe("Create trip", () => {
     expect(response.body.id).toBeDefined();
   });
 
-  it("should not be able to create trip with destination less than 4 words", async () => {
+  it("should not be able to create trip with destination less than 4 chars", async () => {
     const response = await request(app.server)
       .post("/trips")
       .send({
