@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
-import nodemailer from "nodemailer";
+import * as nodemailer from "nodemailer";
 import { z } from "zod";
 import { getMailClient } from "../lib/mail";
 import { prisma } from "../lib/prisma";
@@ -68,6 +68,7 @@ export async function createTrip(app: FastifyInstance) {
       const confirmationUrl = `http://localhost:3333/trips/${trip.id}/confirm`;
 
       const mail = await getMailClient();
+
       const message = await mail.sendMail({
         from: {
           name: "Plann.er Team",
