@@ -8,6 +8,7 @@ import { confirmTrip } from "./routes/confirm-trip";
 import { createTrip } from "./routes/create-trip";
 import { confirmParticipant } from "./routes/confirm-participant";
 import { createActivity } from "./routes/create-activity";
+import { getActivities } from "./routes/get-activities";
 
 export const app = fastify();
 
@@ -20,3 +21,4 @@ app.register(createTrip);
 app.register(confirmTrip);
 app.register(confirmParticipant);
 app.register(createActivity);
+app.register(getActivities);
