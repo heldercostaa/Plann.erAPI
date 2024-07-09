@@ -50,7 +50,9 @@ describe("Confirm trip", () => {
       });
 
     const tripId = createTripResponse.body.id;
-    const response = await request(app.server).get(`/trips/${tripId}/confirm`);
+    const response = await request(app.server)
+      .get(`/trips/${tripId}/confirm`)
+      .expect("Location", `http://localhost:3000/trips/${tripId}`);
     expect(response.statusCode).toBe(302);
 
     const getTripResponse = await request(app.server).get(`/trips/${tripId}`);
@@ -96,12 +98,14 @@ describe("Confirm trip", () => {
       });
 
     const tripId = createTripResponse.body.id;
-    const response = await request(app.server).get(`/trips/${tripId}/confirm`);
+    const response = await request(app.server)
+      .get(`/trips/${tripId}/confirm`)
+      .expect("Location", `http://localhost:3000/trips/${tripId}`);
     expect(response.statusCode).toBe(302);
 
-    const confirmTripAgainResponse = await request(app.server).get(
-      `/trips/${tripId}/confirm`
-    );
+    const confirmTripAgainResponse = await request(app.server)
+      .get(`/trips/${tripId}/confirm`)
+      .expect("Location", `http://localhost:3000/trips/${tripId}`);
     expect(confirmTripAgainResponse.statusCode).toBe(302);
     expect(sendMailMock).toHaveBeenCalledTimes(3);
   });
