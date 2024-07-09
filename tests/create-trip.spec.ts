@@ -1,7 +1,6 @@
 import request from "supertest";
 import {
   afterAll,
-  afterEach,
   beforeAll,
   beforeEach,
   describe,
@@ -36,10 +35,6 @@ describe("Create trip", () => {
 
   beforeEach(async () => {
     await resetDb();
-  });
-
-  afterEach(async () => {
-    vi.clearAllMocks();
   });
 
   it("should be able to create a new trip", async () => {

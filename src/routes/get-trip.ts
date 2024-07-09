@@ -16,7 +16,11 @@ export async function getTrip(app: FastifyInstance) {
 
       const trip = await prisma.trip.findUnique({
         where: { id: tripId },
-        include: { activities: { orderBy: { occurs_at: "asc" } }, links: true },
+        include: {
+          participants: true,
+          activities: { orderBy: { occurs_at: "asc" } },
+          links: true,
+        },
       });
 
       if (!trip) {
