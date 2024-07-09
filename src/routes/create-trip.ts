@@ -1,8 +1,8 @@
+import dayjs from "dayjs";
 import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { z } from "zod";
 import { prisma } from "../lib/prisma";
-import dayjs from "dayjs";
 
 export async function createTrip(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().post(
@@ -13,11 +13,21 @@ export async function createTrip(app: FastifyInstance) {
           destination: z.string().min(4),
           startsAt: z.coerce.date(),
           endsAt: z.coerce.date(),
+          ownerName: z.string(),
+          ownerEmail: z.string().email(),
+          emailsToInvite: z.array(z.string().email()),
         }),
       },
     },
     async (request, reply) => {
-      const { destination, startsAt, endsAt } = request.body;
+      const {
+        destination,
+        startsAt,
+        endsAt,
+        ownerName,
+        ownerEmail,
+        emailsToInvite,
+      } = request.body;
 
       if (dayjs(startsAt).isBefore(new Date())) {
         return reply.status(400).send({ message: "Invalid trip start date" });
@@ -32,6 +42,19 @@ export async function createTrip(app: FastifyInstance) {
           destination,
           starts_at: startsAt,
           ends_at: endsAt,
+          participants: {
+            createMany: {
+              data: [
+                {
+                  name: ownerName,
+                  email: ownerEmail,
+                  is_owner: true,
+                  is_confirmed: true,
+                },
+                ...emailsToInvite.map((email) => ({ email })),
+              ],
+            },
+          },
         },
       });
 
