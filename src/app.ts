@@ -6,6 +6,7 @@ import {
 } from "fastify-type-provider-zod";
 import { confirmTrip } from "./routes/confirm-trip";
 import { createTrip } from "./routes/create-trip";
+import { confirmParticipant } from "./routes/confirm-participant";
 
 export const app = fastify();
 
@@ -18,3 +19,4 @@ app.setSerializerCompiler(serializerCompiler);
 
 app.register(createTrip);
 app.register(confirmTrip);
+app.register(confirmParticipant);

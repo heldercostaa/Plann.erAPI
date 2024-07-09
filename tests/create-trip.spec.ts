@@ -1,4 +1,3 @@
-import dayjs from "dayjs";
 import request from "supertest";
 import {
   afterAll,
@@ -11,6 +10,7 @@ import {
   vi,
 } from "vitest";
 import { app } from "../src/app";
+import { dayjs } from "../src/lib/dayjs";
 import resetDb from "./helpers/reset-db";
 
 // Mock the nodemailer module
