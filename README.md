@@ -17,6 +17,13 @@ cp .env.test.example .env.test
 npm run dev
 ```
 
+## Database
+
+```bash
+npx prisma migrate dev # Compare schema with db and create migrations
+npx prisma studio      # Opens prisma studio to view the database
+```
+
 ## Tests
 
 ```bash
@@ -27,6 +34,8 @@ npm run test
 
 - **Fastify**: As web framework.
 - **Zod**: For schema validation (.env, request body).
+- **Prisma**: As ORM.
+- **SQLite**: As simple database.
 - **Vitest**: To write tests.
 - **Supertest**: To help test the application without any port.
 - **tsup**: To bundle the code.

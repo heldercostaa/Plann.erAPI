@@ -7,3 +7,7 @@ build
 # Environment
 .env
 .env.test
+
+# Database
+*.db
+*.db-journal
