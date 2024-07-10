@@ -42,4 +42,3 @@ npm run test
 - **tsup**: To bundle the code.
 - **commitlint**: To force conventional commits.
 - **husky**: To force hooks before push (test and commit message).
-- **commitizen**: To help build the commit messages.

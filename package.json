@@ -1,7 +1,7 @@
 {
   "name": "plann.er-api",
-  "version": "1.0.0",
   "description": "API for Plann.er App.",
+  "version": "1.0.0",
   "main": "src/server.ts",
   "author": "Helder Costa",
   "scripts": {
@@ -26,12 +26,9 @@
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
-    "@commitlint/types": "^19.0.3",
     "@types/node": "^20.14.10",
     "@types/nodemailer": "^6.4.15",
     "@types/supertest": "^6.0.2",
-    "commitizen": "^4.3.0",
-    "cz-conventional-changelog": "^3.3.0",
     "dotenv-cli": "^7.4.2",
     "eslint": "^9.6.0",
     "husky": "^9.0.11",
@@ -41,10 +38,5 @@
     "tsx": "^4.16.2",
     "typescript": "^5.5.3",
     "vitest": "^2.0.1"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
   }
 }
