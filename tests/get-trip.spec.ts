@@ -51,7 +51,7 @@ describe("Get trip", () => {
         ownerEmail: "john.doe@mail.com",
         emailsToInvite: ["jake.doe@mail.com", "sarah.doe@mail.com"],
       });
-    const tripId = createTripResponse.body.id;
+    const tripId = createTripResponse.body.tripId;
 
     await request(app.server)
       .post(`/trips/${tripId}/activities`)

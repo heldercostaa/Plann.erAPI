@@ -37,7 +37,7 @@ describe("Confirm participant", () => {
     await resetDb();
   });
 
-  it("should be able to confirm a participant and be redirected", async () => {
+  it.only("should be able to confirm a participant and be redirected", async () => {
     const createTripResponse = await request(app.server)
       .post("/trips")
       .send({
@@ -49,7 +49,7 @@ describe("Confirm participant", () => {
         emailsToInvite: ["jake.doe@mail.com", "sarah.doe@mail.com"],
       });
 
-    const tripId = createTripResponse.body.id;
+    const tripId = createTripResponse.body.tripId;
     await request(app.server).get(`/trips/${tripId}/confirm`);
 
     const getTripResponse = await request(app.server).get(`/trips/${tripId}`);

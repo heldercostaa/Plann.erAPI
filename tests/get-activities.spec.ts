@@ -49,7 +49,7 @@ describe("Get activities", () => {
         emailsToInvite: ["jake.doe@mail.com", "sarah.doe@mail.com"],
       });
 
-    const tripId = createTripResponse.body.id;
+    const tripId = createTripResponse.body.tripId;
 
     await request(app.server)
       .post(`/trips/${tripId}/activities`)

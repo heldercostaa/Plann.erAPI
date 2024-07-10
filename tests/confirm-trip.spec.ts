@@ -49,7 +49,7 @@ describe("Confirm trip", () => {
         emailsToInvite: ["jake.doe@mail.com", "sarah.doe@mail.com"],
       });
 
-    const tripId = createTripResponse.body.id;
+    const tripId = createTripResponse.body.tripId;
     const response = await request(app.server)
       .get(`/trips/${tripId}/confirm`)
       .expect("Location", `http://localhost:3000/trips/${tripId}`);
@@ -79,7 +79,7 @@ describe("Confirm trip", () => {
         emailsToInvite: ["jake.doe@mail.com", "sarah.doe@mail.com"],
       });
 
-    const tripId = createTripResponse.body.id;
+    const tripId = createTripResponse.body.tripId;
     await request(app.server).get(`/trips/${tripId}/confirm`);
 
     expect(sendMailMock).toHaveBeenCalledTimes(3);
@@ -97,7 +97,7 @@ describe("Confirm trip", () => {
         emailsToInvite: ["jake.doe@mail.com", "sarah.doe@mail.com"],
       });
 
-    const tripId = createTripResponse.body.id;
+    const tripId = createTripResponse.body.tripId;
     const response = await request(app.server)
       .get(`/trips/${tripId}/confirm`)
       .expect("Location", `http://localhost:3000/trips/${tripId}`);

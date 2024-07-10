@@ -49,7 +49,7 @@ describe("Create activity", () => {
         emailsToInvite: ["jake.doe@mail.com", "sarah.doe@mail.com"],
       });
 
-    const tripId = createTripResponse.body.id;
+    const tripId = createTripResponse.body.tripId;
     const response = await request(app.server)
       .post(`/trips/${tripId}/activities`)
       .send({
@@ -58,7 +58,7 @@ describe("Create activity", () => {
       });
 
     expect(response.statusCode).toBe(201);
-    expect(response.body.id).toBeDefined();
+    expect(response.body.activityId).toBeDefined();
   });
 
   it("should not be able to create a new activity for invalid trip", async () => {
@@ -86,7 +86,7 @@ describe("Create activity", () => {
         emailsToInvite: ["jake.doe@mail.com", "sarah.doe@mail.com"],
       });
 
-    const tripId = createTripResponse.body.id;
+    const tripId = createTripResponse.body.tripId;
     const response = await request(app.server)
       .post(`/trips/${tripId}/activities`)
       .send({
@@ -110,7 +110,7 @@ describe("Create activity", () => {
         emailsToInvite: ["jake.doe@mail.com", "sarah.doe@mail.com"],
       });
 
-    const tripId = createTripResponse.body.id;
+    const tripId = createTripResponse.body.tripId;
     const response = await request(app.server)
       .post(`/trips/${tripId}/activities`)
       .send({
@@ -134,7 +134,7 @@ describe("Create activity", () => {
         emailsToInvite: ["jake.doe@mail.com", "sarah.doe@mail.com"],
       });
 
-    const tripId = createTripResponse.body.id;
+    const tripId = createTripResponse.body.tripId;
     const response = await request(app.server)
       .post(`/trips/${tripId}/activities`)
       .send({

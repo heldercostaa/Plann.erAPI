@@ -50,7 +50,7 @@ describe("Create trip", () => {
       });
 
     expect(response.statusCode).toBe(201);
-    expect(response.body.id).toBeDefined();
+    expect(response.body.tripId).toBeDefined();
   });
 
   it("should not be able to create trip with destination less than 4 chars", async () => {
@@ -149,7 +149,7 @@ describe("Create trip", () => {
 
     const formattedStartDate = dayjs(dayjs().add(7, "day")).format("LL");
     const formattedEndDate = dayjs(dayjs().add(14, "day")).format("LL");
-    const confirmationUrl = `http://localhost:3333/trips/${response.body.id}/confirm`;
+    const confirmationUrl = `http://localhost:3333/trips/${response.body.tripId}/confirm`;
 
     expect(sendMailMock).toHaveBeenCalledOnce();
     expect(sendMailMock).toHaveBeenLastCalledWith({

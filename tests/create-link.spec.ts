@@ -49,7 +49,7 @@ describe("Create link", () => {
         emailsToInvite: ["jake.doe@mail.com", "sarah.doe@mail.com"],
       });
 
-    const tripId = createTripResponse.body.id;
+    const tripId = createTripResponse.body.tripId;
     const response = await request(app.server)
       .post(`/trips/${tripId}/links`)
       .send({
@@ -58,7 +58,7 @@ describe("Create link", () => {
       });
 
     expect(response.statusCode).toBe(201);
-    expect(response.body.id).toBeDefined();
+    expect(response.body.linkId).toBeDefined();
   });
 
   it("should not be able to create a new link for invalid trip", async () => {
@@ -84,7 +84,7 @@ describe("Create link", () => {
         emailsToInvite: ["jake.doe@mail.com", "sarah.doe@mail.com"],
       });
 
-    const tripId = createTripResponse.body.id;
+    const tripId = createTripResponse.body.tripId;
     const response = await request(app.server)
       .post(`/trips/${tripId}/links`)
       .send({
@@ -108,7 +108,7 @@ describe("Create link", () => {
         emailsToInvite: ["jake.doe@mail.com", "sarah.doe@mail.com"],
       });
 
-    const tripId = createTripResponse.body.id;
+    const tripId = createTripResponse.body.tripId;
     const response = await request(app.server)
       .post(`/trips/${tripId}/links`)
       .send({
