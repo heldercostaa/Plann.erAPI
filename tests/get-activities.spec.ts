@@ -24,7 +24,7 @@ vi.mock("nodemailer", () => {
   };
 });
 
-describe("Create link", () => {
+describe("Get activities", () => {
   beforeAll(async () => {
     await app.ready();
   });
