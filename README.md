@@ -32,10 +32,11 @@ npm run test
 
 ## Tools
 
-- **Fastify**: As web framework.
+- **Fastify**: As web api framework.
 - **Zod**: For schema validation (.env, request body).
 - **Prisma**: As ORM.
 - **SQLite**: As simple database.
+- **Nodemailer**: As to easily test email sending.
 - **Vitest**: To write tests.
 - **Supertest**: To help test the application without any port.
 - **tsup**: To bundle the code.

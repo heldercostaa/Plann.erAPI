@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "API for Plann.er App.",
   "main": "src/server.ts",
+  "author": "Helder Costa",
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "build": "tsup src --out-dir build",
@@ -12,8 +13,6 @@
     "lint": "eslint src --ext .ts --fix",
     "prepare": "husky"
   },
-  "author": "Helder Costa",
-  "license": "ISC",
   "dependencies": {
     "@fastify/cors": "^9.0.1",
     "@prisma/client": "^5.16.2",
