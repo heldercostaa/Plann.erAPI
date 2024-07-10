@@ -4,18 +4,19 @@ import {
   serializerCompiler,
   validatorCompiler,
 } from "fastify-type-provider-zod";
-import { confirmTrip } from "./routes/confirm-trip";
-import { createTrip } from "./routes/create-trip";
+import { errorHandler } from "./error-handler";
 import { confirmParticipant } from "./routes/confirm-participant";
+import { confirmTrip } from "./routes/confirm-trip";
 import { createActivity } from "./routes/create-activity";
-import { getActivities } from "./routes/get-activities";
-import { createLink } from "./routes/create-link";
-import { getLinks } from "./routes/get-links";
-import { getTrip } from "./routes/get-trip";
-import { getParticipants } from "./routes/get-participants";
 import { createInvite } from "./routes/create-invite";
-import { updateTrip } from "./routes/update-trip";
+import { createLink } from "./routes/create-link";
+import { createTrip } from "./routes/create-trip";
+import { getActivities } from "./routes/get-activities";
+import { getLinks } from "./routes/get-links";
 import { getParticipant } from "./routes/get-participant";
+import { getParticipants } from "./routes/get-participants";
+import { getTrip } from "./routes/get-trip";
+import { updateTrip } from "./routes/update-trip";
 
 export const app = fastify();
 
@@ -23,6 +24,8 @@ app.register(cors, { origin: "*" });
 
 app.setValidatorCompiler(validatorCompiler);
 app.setSerializerCompiler(serializerCompiler);
+
+app.setErrorHandler(errorHandler);
 
 app.register(createTrip);
 app.register(confirmTrip);

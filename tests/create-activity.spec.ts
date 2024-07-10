@@ -143,8 +143,9 @@ describe("Create activity", () => {
       });
 
     expect(response.statusCode).toBe(400);
-    expect(response.body.message).toContain(
-      "String must contain at least 4 character(s)"
-    );
+    expect(response.body).toEqual({
+      message: "Invalid input",
+      errors: { title: ["String must contain at least 4 character(s)"] },
+    });
   });
 });

@@ -5,6 +5,7 @@ import { z } from "zod";
 import { dayjs } from "../lib/dayjs";
 import { getMailClient } from "../lib/mail";
 import { prisma } from "../lib/prisma";
+import { ClientError } from "../errors/client-error";
 
 export async function confirmTrip(app: FastifyInstance) {
   app
@@ -27,7 +28,7 @@ export async function confirmTrip(app: FastifyInstance) {
         });
 
         if (!trip) {
-          return reply.status(400).send({ message: "Trip not found" });
+          throw new ClientError("Trip not found");
         }
 
         if (trip.is_confirmed) {

@@ -66,9 +66,10 @@ describe("Create trip", () => {
       });
 
     expect(response.statusCode).toBe(400);
-    expect(response.body.message).toContain(
-      "String must contain at least 4 character(s)"
-    );
+    expect(response.body).toEqual({
+      message: "Invalid input",
+      errors: { destination: ["String must contain at least 4 character(s)"] },
+    });
   });
 
   it("should not be able to create trip with start date before today", async () => {
@@ -116,7 +117,10 @@ describe("Create trip", () => {
       });
 
     expect(response.statusCode).toBe(400);
-    expect(response.body.message).toContain("Invalid email");
+    expect(response.body).toEqual({
+      message: "Invalid input",
+      errors: { ownerEmail: ["Invalid email"] },
+    });
   });
 
   it("should not be able to create trip with invalid participants emails", async () => {
@@ -132,7 +136,10 @@ describe("Create trip", () => {
       });
 
     expect(response.statusCode).toBe(400);
-    expect(response.body.message).toContain("Invalid email");
+    expect(response.body).toEqual({
+      message: "Invalid input",
+      errors: { emailsToInvite: ["Invalid email"] },
+    });
   });
 
   it("should send email to owner when creating a trip", async () => {

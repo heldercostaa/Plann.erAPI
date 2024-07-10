@@ -29,7 +29,7 @@ export async function getParticipants(app: FastifyInstance) {
       });
 
       if (!trip) {
-        return reply.status(400).send({ message: "Trip not found" });
+        throw new ClientError("Trip not found");
       }
 
       return reply.send({ participants: trip.participants });

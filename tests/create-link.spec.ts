@@ -93,7 +93,10 @@ describe("Create link", () => {
       });
 
     expect(response.statusCode).toBe(400);
-    expect(response.body.message).toContain("Invalid url");
+    expect(response.body).toEqual({
+      message: "Invalid input",
+      errors: { url: ["Invalid url"] },
+    });
   });
 
   it("should not be able to create a new link with title less than 4 chars", async () => {
@@ -113,12 +116,15 @@ describe("Create link", () => {
       .post(`/trips/${tripId}/links`)
       .send({
         title: "Air",
-        occursAt: dayjs().add(15, "day"),
+        url: "https://airbnb.com",
       });
 
     expect(response.statusCode).toBe(400);
-    expect(response.body.message).toContain(
-      "String must contain at least 4 character(s)"
-    );
+    expect(response.body).toEqual({
+      message: "Invalid input",
+      errors: {
+        title: ["String must contain at least 4 character(s)"],
+      },
+    });
   });
 });
