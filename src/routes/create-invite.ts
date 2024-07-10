@@ -2,6 +2,8 @@ import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import * as nodemailer from "nodemailer";
 import { z } from "zod";
+import { env } from "../env";
+import { ClientError } from "../errors/client-error";
 import { dayjs } from "../lib/dayjs";
 import { getMailClient } from "../lib/mail";
 import { prisma } from "../lib/prisma";
@@ -39,7 +41,7 @@ export async function createInvite(app: FastifyInstance) {
 
       const mail = await getMailClient();
 
-      const confirmationUrl = `http://localhost:3333/participants/${participant.id}/confirm`;
+      const confirmationUrl = `${env.API_BASE_URL}/participants/${participant.id}/confirm`;
 
       const message = await mail.sendMail({
         from: {

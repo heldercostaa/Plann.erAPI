@@ -9,6 +9,7 @@ import {
   vi,
 } from "vitest";
 import { app } from "../src/app";
+import { env } from "../src/env";
 import { dayjs } from "../src/lib/dayjs";
 import resetDb from "./helpers/reset-db";
 
@@ -52,7 +53,7 @@ describe("Confirm trip", () => {
     const tripId = createTripResponse.body.tripId;
     const response = await request(app.server)
       .get(`/trips/${tripId}/confirm`)
-      .expect("Location", `http://localhost:3000/trips/${tripId}`);
+      .expect("Location", `${env.WEB_BASE_URL}/trips/${tripId}`);
     expect(response.statusCode).toBe(302);
 
     const getTripResponse = await request(app.server).get(`/trips/${tripId}`);
@@ -100,12 +101,12 @@ describe("Confirm trip", () => {
     const tripId = createTripResponse.body.tripId;
     const response = await request(app.server)
       .get(`/trips/${tripId}/confirm`)
-      .expect("Location", `http://localhost:3000/trips/${tripId}`);
+      .expect("Location", `${env.WEB_BASE_URL}/trips/${tripId}`);
     expect(response.statusCode).toBe(302);
 
     const confirmTripAgainResponse = await request(app.server)
       .get(`/trips/${tripId}/confirm`)
-      .expect("Location", `http://localhost:3000/trips/${tripId}`);
+      .expect("Location", `${env.WEB_BASE_URL}/trips/${tripId}`);
     expect(confirmTripAgainResponse.statusCode).toBe(302);
     expect(sendMailMock).toHaveBeenCalledTimes(3);
   });

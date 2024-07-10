@@ -9,6 +9,7 @@ import {
   vi,
 } from "vitest";
 import { app } from "../src/app";
+import { env } from "../src/env";
 import { dayjs } from "../src/lib/dayjs";
 import resetDb from "./helpers/reset-db";
 
@@ -156,7 +157,7 @@ describe("Create trip", () => {
 
     const formattedStartDate = dayjs(dayjs().add(7, "day")).format("LL");
     const formattedEndDate = dayjs(dayjs().add(14, "day")).format("LL");
-    const confirmationUrl = `http://localhost:3333/trips/${response.body.tripId}/confirm`;
+    const confirmationUrl = `${env.API_BASE_URL}/trips/${response.body.tripId}/confirm`;
 
     expect(sendMailMock).toHaveBeenCalledOnce();
     expect(sendMailMock).toHaveBeenLastCalledWith({

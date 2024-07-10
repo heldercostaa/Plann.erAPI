@@ -2,6 +2,7 @@ import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import * as nodemailer from "nodemailer";
 import { z } from "zod";
+import { env } from "../env";
 import { ClientError } from "../errors/client-error";
 import { dayjs } from "../lib/dayjs";
 import { getMailClient } from "../lib/mail";
@@ -63,7 +64,7 @@ export async function createTrip(app: FastifyInstance) {
 
       const formattedStartDate = dayjs(startsAt).format("LL");
       const formattedEndDate = dayjs(endsAt).format("LL");
-      const confirmationUrl = `http://localhost:3333/trips/${trip.id}/confirm`;
+      const confirmationUrl = `${env.API_BASE_URL}/trips/${trip.id}/confirm`;
 
       const mail = await getMailClient();
 

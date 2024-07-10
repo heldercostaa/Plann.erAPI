@@ -9,6 +9,7 @@ import {
   vi,
 } from "vitest";
 import { app } from "../src/app";
+import { env } from "../src/env";
 import { dayjs } from "../src/lib/dayjs";
 import resetDb from "./helpers/reset-db";
 
@@ -59,7 +60,7 @@ describe("Confirm participant", () => {
 
     const response = await request(app.server)
       .get(`/participants/${participant.id}/confirm`)
-      .expect("Location", `http://localhost:3000/trips/${tripId}`);
+      .expect("Location", `${env.WEB_BASE_URL}/trips/${tripId}`);
     expect(response.statusCode).toBe(302);
   });
 
