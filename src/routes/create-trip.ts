@@ -83,7 +83,7 @@ export async function createTrip(app: FastifyInstance) {
           <p>To confirm and plan your trip, click the link below:</p>
           <p></p>
           <p>
-            <a href="${confirmationUrl} target="_blank">Confirm trip</a>
+            <a href="${confirmationUrl}>Confirm trip</a>
           </p>
           <p></p>
           <p>If you don't know what this email is about, please disconsider this message.</p>
