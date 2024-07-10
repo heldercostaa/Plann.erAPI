@@ -31,7 +31,7 @@ export async function createLink(app: FastifyInstance) {
         data: { title, url, trip_id: tripId },
       });
 
-      return reply.status(201).send({ id: link.id });
+      return reply.status(201).send({ linkId: link.id });
     }
   );
 }

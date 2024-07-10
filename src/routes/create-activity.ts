@@ -40,7 +40,7 @@ export async function createActivity(app: FastifyInstance) {
         data: { title, occurs_at: occursAt, trip_id: tripId },
       });
 
-      return reply.status(201).send({ id: activity.id });
+      return reply.status(201).send({ activityId: activity.id });
     }
   );
 }

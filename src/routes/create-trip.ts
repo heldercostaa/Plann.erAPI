@@ -95,7 +95,7 @@ export async function createTrip(app: FastifyInstance) {
         `Email preview link: ${nodemailer.getTestMessageUrl(message)}`
       );
 
-      return reply.status(201).send({ id: trip.id });
+      return reply.status(201).send({ tripId: trip.id });
     }
   );
 }
