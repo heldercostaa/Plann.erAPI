@@ -1,0 +1,21 @@
+version: 2.1
+orbs:
+  node: circleci/node@5.2.0
+jobs:
+  npm_run_test: 
+    executor: node/default 
+    steps:
+      - checkout
+      - node/install-packages:
+          pkg-manager: npm
+      - run:
+          command: npm run test:coverage
+          name: Run tests
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - .
+workflows:
+  test: 
+    jobs:
+      - npm_run_test
