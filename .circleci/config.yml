@@ -2,8 +2,8 @@ version: 2.1
 orbs:
   node: circleci/node@5.2.0
 jobs:
-  npm_run_test: 
-    executor: node/default 
+  test_coverage:
+    executor: node/default
     environment:
       DATABASE_URL: "file:./test.db"
       WEB_BASE_URL: "http://localhost:3000"
@@ -16,8 +16,8 @@ jobs:
           command: npm run test:coverage
           name: Run tests
       - store_test_results:
-          path: coverage/result.xml
+          path: coverage/tests-report.xml
 workflows:
-  test: 
+  tests:
     jobs:
-      - npm_run_test
+      - test_coverage
