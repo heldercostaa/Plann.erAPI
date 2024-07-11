@@ -42,3 +42,9 @@ npm run test
 - **tsup**: To bundle the code.
 - **commitlint**: To force conventional commits.
 - **husky**: To force hooks before push (test and commit message).
+
+## Roadmap
+
+- [ ] Write tests to remaining services all services
+- [ ] Add nice logger lib
+- [ ] Deploy the application

@@ -22,7 +22,7 @@ export async function getParticipants(app: FastifyInstance) {
               id: true,
               name: true,
               email: true,
-              is_confirmed: true,
+              isConfirmed: true,
             },
           },
         },

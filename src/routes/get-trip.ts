@@ -19,7 +19,7 @@ export async function getTrip(app: FastifyInstance) {
         where: { id: tripId },
         include: {
           participants: true,
-          activities: { orderBy: { occurs_at: "asc" } },
+          activities: { orderBy: { occursAt: "asc" } },
           links: true,
         },
       });

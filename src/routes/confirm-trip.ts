@@ -22,7 +22,7 @@ export async function confirmTrip(app: FastifyInstance) {
           include: {
             participants: {
               where: {
-                is_owner: false,
+                isOwner: false,
               },
             },
           },
@@ -32,17 +32,17 @@ export async function confirmTrip(app: FastifyInstance) {
           throw new ClientError("Trip not found");
         }
 
-        if (trip.is_confirmed) {
+        if (trip.isConfirmed) {
           return reply.redirect(`${env.WEB_BASE_URL}/trips/${tripId}`);
         }
 
         await prisma.trip.update({
           where: { id: tripId },
-          data: { is_confirmed: true },
+          data: { isConfirmed: true },
         });
 
-        const formattedStartDate = dayjs(trip.starts_at).format("LL");
-        const formattedEndDate = dayjs(trip.ends_at).format("LL");
+        const formattedStartDate = dayjs(trip.startsAt).format("LL");
+        const formattedEndDate = dayjs(trip.endsAt).format("LL");
 
         const mail = await getMailClient();
 

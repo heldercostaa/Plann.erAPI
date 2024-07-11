@@ -32,12 +32,12 @@ export async function createInvite(app: FastifyInstance) {
       const participant = await prisma.participant.create({
         data: {
           email,
-          trip_id: tripId,
+          tripId,
         },
       });
 
-      const formattedStartDate = dayjs(trip.starts_at).format("LL");
-      const formattedEndDate = dayjs(trip.ends_at).format("LL");
+      const formattedStartDate = dayjs(trip.startsAt).format("LL");
+      const formattedEndDate = dayjs(trip.endsAt).format("LL");
 
       const mail = await getMailClient();
 

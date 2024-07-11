@@ -55,7 +55,7 @@ describe("Confirm participant", () => {
 
     const getTripResponse = await request(app.server).get(`/trips/${tripId}`);
     const [participant] = getTripResponse.body.trip.participants.filter(
-      (participant: any) => !participant.is_owner
+      (participant: any) => !participant.isOwner
     );
 
     const response = await request(app.server)

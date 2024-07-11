@@ -29,7 +29,7 @@ export async function createLink(app: FastifyInstance) {
       }
 
       const link = await prisma.link.create({
-        data: { title, url, trip_id: tripId },
+        data: { title, url, tripId },
       });
 
       return reply.status(201).send({ linkId: link.id });

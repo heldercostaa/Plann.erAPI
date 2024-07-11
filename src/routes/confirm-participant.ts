@@ -22,19 +22,19 @@ export async function confirmParticipant(app: FastifyInstance) {
           throw new ClientError("Participant not found");
         }
 
-        if (participant.is_confirmed) {
+        if (participant.isConfirmed) {
           return reply.redirect(
-            `${env.WEB_BASE_URL}/trips/${participant.trip_id}`
+            `${env.WEB_BASE_URL}/trips/${participant.tripId}`
           );
         }
 
         await prisma.participant.update({
           where: { id: participantId },
-          data: { is_confirmed: true },
+          data: { isConfirmed: true },
         });
 
         return reply.redirect(
-          `${env.WEB_BASE_URL}/trips/${participant.trip_id}`
+          `${env.WEB_BASE_URL}/trips/${participant.tripId}`
         );
       }
     );

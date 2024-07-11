@@ -1,8 +1,7 @@
 {
   "name": "plann.er-api",
-  "description": "API for Plann.er App.",
   "version": "1.0.0",
-  "main": "src/server.ts",
+  "description": "API for Plann.er App.",
   "author": "Helder Costa",
   "scripts": {
     "dev": "tsx watch src/server.ts",

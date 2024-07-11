@@ -57,7 +57,7 @@ describe("Confirm trip", () => {
     expect(response.statusCode).toBe(302);
 
     const getTripResponse = await request(app.server).get(`/trips/${tripId}`);
-    expect(getTripResponse.body.trip.is_confirmed).toBeTruthy();
+    expect(getTripResponse.body.trip.isConfirmed).toBeTruthy();
   });
 
   it("should not be able to confirm a non-existing trip", async () => {

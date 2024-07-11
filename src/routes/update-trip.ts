@@ -42,8 +42,8 @@ export async function updateTrip(app: FastifyInstance) {
         where: { id: tripId },
         data: {
           destination,
-          starts_at: startsAt,
-          ends_at: endsAt,
+          startsAt,
+          endsAt,
         },
       });
 

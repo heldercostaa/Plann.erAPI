@@ -69,9 +69,9 @@ describe("Get trip", () => {
     expect(response.body.trip).toEqual(
       expect.objectContaining({
         destination: "Fortaleza",
-        starts_at: startsAt.toISOString(),
-        ends_at: endsAt.toISOString(),
-        is_confirmed: false,
+        startsAt: startsAt.toISOString(),
+        endsAt: endsAt.toISOString(),
+        isConfirmed: false,
         participants: [
           expect.objectContaining({ email: "john.doe@mail.com" }),
           expect.objectContaining({ email: "jake.doe@mail.com" }),
