@@ -49,7 +49,7 @@ export async function createInvite(app: FastifyInstance) {
           address: "hello@plann.er",
         },
         to: participant.email,
-        subject: `Confirm you presence to ${trip.destination} on ${formattedStartDate}`,
+        subject: `Confirm your presence to ${trip.destination} on ${formattedStartDate}`,
         html: `
           <div style="font-family: sans-serif; font-size: 16px; line-height: 1.6;">
             <p>You were invited to participate in a trip to <strong>${trip.destination}</strong> between <strong>${formattedStartDate}</strong> and <strong>${formattedEndDate}</strong>.</p>
@@ -57,12 +57,11 @@ export async function createInvite(app: FastifyInstance) {
             <p>To confirm your present in the trip, click the link below:</p>
             <p></p>
             <p>
-              <a href="${confirmationUrl}>Confirm trip</a>
+              <a href="${confirmationUrl}">Confirm trip</a>
             </p>
             <p></p>
             <p>If you don't know what this email is about, please disconsider this message.</p>
-          </div>
-        `.trim(),
+          </div>`.trim(),
       });
 
       console.log(

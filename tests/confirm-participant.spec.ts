@@ -38,7 +38,7 @@ describe("Confirm participant", () => {
     await resetDb();
   });
 
-  it.only("should be able to confirm a participant and be redirected", async () => {
+  it("should be able to confirm a participant and be redirected", async () => {
     const createTripResponse = await request(app.server)
       .post("/trips")
       .send({
