@@ -11,3 +11,6 @@ build
 # Database
 *.db
 *.db-journal
+
+# Tests
+coverage

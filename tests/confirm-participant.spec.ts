@@ -73,4 +73,35 @@ describe("Confirm participant", () => {
     expect(response.statusCode).toBe(400);
     expect(response.body.message).toBe("Participant not found");
   });
+
+  it("should redirect if participant already confirmed", async () => {
+    const createTripResponse = await request(app.server)
+      .post("/trips")
+      .send({
+        destination: "Fortaleza",
+        startsAt: dayjs().add(7, "day"),
+        endsAt: dayjs().add(14, "day"),
+        ownerName: "John Doe",
+        ownerEmail: "john.doe@mail.com",
+        emailsToInvite: ["jake.doe@mail.com", "sarah.doe@mail.com"],
+      });
+
+    const tripId = createTripResponse.body.tripId;
+    await request(app.server).get(`/trips/${tripId}/confirm`);
+
+    const getTripResponse = await request(app.server).get(`/trips/${tripId}`);
+    const [participant] = getTripResponse.body.trip.participants.filter(
+      (participant: any) => !participant.isOwner
+    );
+
+    await request(app.server)
+      .get(`/participants/${participant.id}/confirm`)
+      .expect("Location", `${env.WEB_BASE_URL}/trips/${tripId}`);
+
+    const response = await request(app.server)
+      .get(`/participants/${participant.id}/confirm`)
+      .expect("Location", `${env.WEB_BASE_URL}/trips/${tripId}`);
+
+    expect(response.statusCode).toBe(302);
+  });
 });

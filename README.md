@@ -45,7 +45,6 @@ npm run test
 
 ## Roadmap
 
-- [ ] Write tests to remaining services
+- [ ] Add coverage report
 - [ ] Add nice logger lib
 - [ ] Deploy the application
-- [ ] Add coverage report
