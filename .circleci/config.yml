@@ -16,7 +16,7 @@ jobs:
           command: npm run test:coverage
           name: Run tests
       - store_test_results:
-          path: coverage
+          path: coverage/result.xml
 workflows:
   test: 
     jobs:
