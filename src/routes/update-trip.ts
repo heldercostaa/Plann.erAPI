@@ -38,6 +38,10 @@ export async function updateTrip(app: FastifyInstance) {
         throw new ClientError("Invalid trip end date");
       }
 
+      if (dayjs(endsAt).isBefore(trip.startsAt)) {
+        throw new ClientError("Invalid trip end date");
+      }
+
       await prisma.trip.update({
         where: { id: tripId },
         data: {
