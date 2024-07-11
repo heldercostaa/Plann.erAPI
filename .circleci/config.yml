@@ -15,10 +15,8 @@ jobs:
       - run:
           command: npm run test:coverage
           name: Run tests
-      - persist_to_workspace:
-          root: ~/project
-          paths:
-            - .
+      - store_test_results:
+          path: coverage
 workflows:
   test: 
     jobs:
