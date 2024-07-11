@@ -48,3 +48,4 @@ npm run test
 - [ ] Write tests to remaining services
 - [ ] Add nice logger lib
 - [ ] Deploy the application
+- [ ] Add coverage report
