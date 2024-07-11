@@ -4,6 +4,10 @@ orbs:
 jobs:
   npm_run_test: 
     executor: node/default 
+    environment:
+      DATABASE_URL: "file:./test.db"
+      WEB_BASE_URL: "http://localhost:3000"
+      API_BASE_URL: "http://localhost:3333"
     steps:
       - checkout
       - node/install-packages:
