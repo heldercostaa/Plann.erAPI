@@ -4,7 +4,10 @@ export default defineConfig({
   test: {
     fileParallelism: false,
     clearMocks: true,
+    reporters: ["verbose", "junit"],
+    outputFile: "coverage/tests-report.xml",
     coverage: {
+      provider: "v8",
       include: ["src/app.ts", "src/lib", "src/routes"],
     },
   },
