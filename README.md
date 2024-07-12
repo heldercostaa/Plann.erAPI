@@ -50,5 +50,4 @@ npm run test
 
 ## Roadmap
 
-- [ ] Add .postman routes
 - [ ] Deploy the application

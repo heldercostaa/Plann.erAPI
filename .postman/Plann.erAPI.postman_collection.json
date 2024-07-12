@@ -1,0 +1,299 @@
+{
+	"info": {
+		"_postman_id": "7c602127-2e2d-491a-b1b8-f2eee932e24a",
+		"name": "Plann.erAPI",
+		"description": "API for Plann.er.\n\nGithub repo: [https://github.com/heldercostaa/Plann.erAPI](https://github.com/heldercostaa/Plann.erAPI)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8553383"
+	},
+	"item": [
+		{
+			"name": "Trips",
+			"item": [
+				{
+					"name": "Create trip",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"destination\": \"Fortaleza\",\r\n    \"startsAt\": \"2024-12-01T13:00:00Z\",\r\n    \"endsAt\": \"2024-12-14T18:00:00Z\",\r\n    \"ownerName\": \"Helder Costa\",\r\n    \"ownerEmail\": \"helderlpcosta@gmail.com\",\r\n    \"emailsToInvite\": [\r\n        \"john.doe@mail.com\",\r\n        \"jake.doe@mail.com\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/trips",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"trips"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update trip",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"destination\": \"Fortaleza\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/trips/01a2c5d3-4b72-47fb-9d05-fcc8cab70edf",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"trips",
+								"01a2c5d3-4b72-47fb-9d05-fcc8cab70edf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm trip",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/trips/01a2c5d3-4b72-47fb-9d05-fcc8cab70edf/confirm",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"trips",
+								"01a2c5d3-4b72-47fb-9d05-fcc8cab70edf",
+								"confirm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get trip",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/trips/01a2c5d3-4b72-47fb-9d05-fcc8cab70edf",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"trips",
+								"01a2c5d3-4b72-47fb-9d05-fcc8cab70edf"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Participants",
+			"item": [
+				{
+					"name": "Confirm participant",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/participants/2125c2d4-662f-4f31-9caf-5cd517ea7631/confirm",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"participants",
+								"2125c2d4-662f-4f31-9caf-5cd517ea7631",
+								"confirm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get participants",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/trips/01a2c5d3-4b72-47fb-9d05-fcc8cab70edf/participants",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"trips",
+								"01a2c5d3-4b72-47fb-9d05-fcc8cab70edf",
+								"participants"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get participant",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/participants/e87650df-3e0b-41b8-a6ff-3e68892e2ac5",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"participants",
+								"e87650df-3e0b-41b8-a6ff-3e68892e2ac5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create invite",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"sarah.doe@mail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/trips/01a2c5d3-4b72-47fb-9d05-fcc8cab70edf/invites",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"trips",
+								"01a2c5d3-4b72-47fb-9d05-fcc8cab70edf",
+								"invites"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Activities",
+			"item": [
+				{
+					"name": "Create activity",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Museum\",\r\n    \"occursAt\": \"2024-12-03T11:00:00Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/trips/01a2c5d3-4b72-47fb-9d05-fcc8cab70edf/activities",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"trips",
+								"01a2c5d3-4b72-47fb-9d05-fcc8cab70edf",
+								"activities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get activities",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/trips/1a1d33fa-d1c6-4a84-9b94-ad659ff3d551/activities",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"trips",
+								"1a1d33fa-d1c6-4a84-9b94-ad659ff3d551",
+								"activities"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Links",
+			"item": [
+				{
+					"name": "Create link",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Airbnb reservation\",\r\n    \"url\": \"https://airbnb.com/\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/trips/01a2c5d3-4b72-47fb-9d05-fcc8cab70edf/links",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"trips",
+								"01a2c5d3-4b72-47fb-9d05-fcc8cab70edf",
+								"links"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get links",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/trips/01a2c5d3-4b72-47fb-9d05-fcc8cab70edf/links",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"trips",
+								"01a2c5d3-4b72-47fb-9d05-fcc8cab70edf",
+								"links"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
