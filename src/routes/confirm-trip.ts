@@ -6,6 +6,7 @@ import { env } from "../env";
 import { ClientError } from "../errors/client-error";
 import { dayjs } from "../lib/dayjs";
 import { getMailClient } from "../lib/mail";
+import { logger } from "../lib/pino";
 import { prisma } from "../lib/prisma";
 
 export async function confirmTrip(app: FastifyInstance) {
@@ -72,7 +73,7 @@ export async function confirmTrip(app: FastifyInstance) {
               `.trim(),
             });
 
-            console.log(
+            logger.info(
               `Email preview link: ${nodemailer.getTestMessageUrl(message)}`
             );
           })

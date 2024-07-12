@@ -38,15 +38,17 @@ npm run test
 - **Zod**: For schema validation (.env, request body).
 - **Prisma**: As ORM.
 - **SQLite**: As simple database.
-- **Nodemailer**: As to easily test email sending.
+- **Nodemailer**: To easily test email sending.
 - **Vitest**: To write tests.
 - **Supertest**: To help test the application without any port.
 - **tsup**: To bundle the code.
+- **CircleCI**: To manage pipelines.
+- **codecov**: To get test coverage.
+- **Pino**: As logger library.
 - **commitlint**: To force conventional commits.
 - **husky**: To force hooks before push (test and commit message).
 
 ## Roadmap
 
-- [ ] Add coverage report
-- [ ] Add nice logger lib
+- [ ] Add .postman routes
 - [ ] Deploy the application
