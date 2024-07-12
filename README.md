@@ -57,3 +57,4 @@ npm run test:coverate # run tests and generate coverage report under ./coverage
 ## Roadmap
 
 - [ ] Deploy the application live
+- [ ] Improve readme by adding pictures (use FE)

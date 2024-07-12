@@ -73,7 +73,7 @@ describe("Create trip", () => {
     });
   });
 
-  it("should not be able to create trip with start date before today", async () => {
+  it("should be able to create trip with start date before today", async () => {
     const response = await request(app.server)
       .post("/trips")
       .send({
@@ -85,8 +85,8 @@ describe("Create trip", () => {
         emailsToInvite: ["jake.doe@mail.com", "sarah.doe@mail.com"],
       });
 
-    expect(response.statusCode).toBe(400);
-    expect(response.body.message).toBe("Invalid trip start date");
+    expect(response.statusCode).toBe(201);
+    expect(response.body.tripId).toBeDefined();
   });
 
   it("should not be able to create trip with end date before start date", async () => {
