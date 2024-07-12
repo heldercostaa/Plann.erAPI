@@ -5,6 +5,7 @@ import {
   validatorCompiler,
 } from "fastify-type-provider-zod";
 import { errorHandler } from "./error-handler";
+import { logger } from "./lib/pino";
 import { confirmParticipant } from "./routes/confirm-participant";
 import { confirmTrip } from "./routes/confirm-trip";
 import { createActivity } from "./routes/create-activity";
@@ -19,6 +20,10 @@ import { getTrip } from "./routes/get-trip";
 import { updateTrip } from "./routes/update-trip";
 
 export const app = fastify();
+
+app.addHook("preHandler", async (request, reply) => {
+  logger.trace(`[${request.method}] ${request.url}`);
+});
 
 app.register(cors, { origin: "*" });
 
