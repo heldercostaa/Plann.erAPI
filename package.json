@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "API for Plann.er App.",
   "author": "Helder Costa",
+  "engines": {
+    "node": ">=20.15.1"
+  },
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "build": "tsup src --out-dir build",
@@ -20,7 +23,6 @@
     "fastify-type-provider-zod": "^2.0.0",
     "nodemailer": "^6.9.14",
     "pino": "^9.2.0",
-    "supports-color": "^9.4.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {

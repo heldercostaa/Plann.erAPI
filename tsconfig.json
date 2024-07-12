@@ -4,12 +4,12 @@
 
   "compilerOptions": {
     "lib": ["es2023"],
-    "module": "node16",
+    "module": "nodenext",
     "target": "es2022",
 
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "moduleResolution": "Node16"
+    "moduleResolution": "node16"
   }
 }
