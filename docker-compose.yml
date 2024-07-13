@@ -3,23 +3,31 @@ name: planner
 
 services:
   api:
-    container_name: planner-api
+    container_name: api
     build: .
     ports:
       - 3333:3333
     environment:
+      # Api
       NODE_ENV: ${NODE_ENV}
-      DATABASE_URL: ${DATABASE_URL}
-      WEB_BASE_URL: ${WEB_BASE_URL}
-      API_BASE_URL: ${API_BASE_URL}
       PORT: ${PORT}
+      API_BASE_URL: ${API_BASE_URL}
       LOG_LEVEL: ${LOG_LEVEL}
+      # Web
+      WEB_BASE_URL: ${WEB_BASE_URL}
+      # Database
+      DATABASE_URL: ${DATABASE_URL}
+      DB_HOST: ${DB_HOST}
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_PORT: ${DB_PORT}
       DB_LOG_LEVEL: ${DB_LOG_LEVEL}
     networks:
       - planner
 
   postgres:
-    container_name: postgres-db
+    container_name: postgres
     image: postgres:16.3-alpine
     restart: always
     ports:

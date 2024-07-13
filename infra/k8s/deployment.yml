@@ -1,0 +1,94 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: planner-deployment
+  labels:
+    app: planner
+
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: planner
+  template:
+    metadata:
+      labels:
+        app: planner
+    spec:
+      containers:
+        - name: planner-api
+          image: heldercostaa/planner-api:86dc681
+          env:
+            # Api
+            - name: NODE_ENV
+              valueFrom:
+                secretKeyRef:
+                  name: api-vars
+                  key: NODE_ENV
+            - name: PORT
+              valueFrom:
+                secretKeyRef:
+                  name: api-vars
+                  key: PORT
+            - name: API_BASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: api-vars
+                  key: API_BASE_URL
+            - name: LOG_LEVEL
+              valueFrom:
+                secretKeyRef:
+                  name: api-vars
+                  key: LOG_LEVEL
+            # Web
+            - name: WEB_BASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: api-vars
+                  key: WEB_BASE_URL
+            # Database
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: api-vars
+                  key: DATABASE_URL
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: api-vars
+                  key: DB_HOST
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: api-vars
+                  key: DB_NAME
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: api-vars
+                  key: DB_USER
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: api-vars
+                  key: DB_PASSWORD
+            - name: DB_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: api-vars
+                  key: DB_PORT
+            - name: DB_LOG_LEVEL
+              valueFrom:
+                secretKeyRef:
+                  name: api-vars
+                  key: DB_LOG_LEVEL
+          ports:
+            - containerPort: 3333
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 200m
+              memory: 128Mi
