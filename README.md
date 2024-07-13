@@ -53,7 +53,7 @@ docker run -d --name planner-api -p 3333:3333 planner-api:v1
 - **Vitest**: To write tests.
 - **Supertest**: To help test the application without any port.
 - **tsup**: To bundle the code.
-- **CircleCI**: To manage pipelines.
+- **Github Actions**: To manage workflows.
 - **codecov**: To get test coverage.
 - **Pino**: As logger library.
 - **commitlint**: To force conventional commits.
