@@ -7,20 +7,20 @@ on:
 
 env:
   # Api
-  NODE_ENV: test
-  PORT: 3333
-  API_BASE_URL: http://localhost:3333
-  LOG_LEVEL: silent
+  NODE_ENV: "test"
+  PORT: "3333"
+  API_BASE_URL: "http://localhost:3333"
+  LOG_LEVEL: "silent"
   # Web
-  WEB_BASE_URL: http://localhost:3000
+  WEB_BASE_URL: "http://localhost:3000"
   # Database
-  DATABASE_URL: file:./test.db
-  DB_HOST: localhost
-  DB_NAME: planner
-  DB_USER: postgres
-  DB_PASSWORD: postgres
-  DB_PORT: 5432
-  DB_LOG_LEVEL: error
+  DATABASE_URL: "file:./test.db"
+  DB_HOST: "localhost"
+  DB_NAME: "planner"
+  DB_USER: "postgres"
+  DB_PASSWORD: "postgres"
+  DB_PORT: "5432"
+  DB_LOG_LEVEL: "error"
 
 jobs:
   build-and-push:
