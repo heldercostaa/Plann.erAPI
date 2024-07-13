@@ -5,6 +5,12 @@ on:
     branches:
       - main
 
+env:
+  DATABASE_URL: "file:./test.db"
+  WEB_BASE_URL: "http://localhost:3000"
+  API_BASE_URL: "http://localhost:3333"
+  LOG_LEVEL: "silent"
+
 jobs:
   build-and-push:
     name: "Build and Push"
