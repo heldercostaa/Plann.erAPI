@@ -57,8 +57,8 @@ npm run test:coverate # run tests and generate coverage report under ./coverage
 ## Docker
 
 ```
-docker build -t planner-api:1.0 .
-docker run -d --name planner-api -p 3333:3333 planner-api:1.0
+docker build -t planner-api:v1 .
+docker run -d --name planner-api -p 3333:3333 planner-api:v1
 ```
 
 ## Roadmap
