@@ -1,7 +1,9 @@
 version: 2.1
+
 orbs:
   node: circleci/node@5.2.0
   codecov: codecov/codecov@4.1.0
+
 jobs:
   test_coverage:
     executor: node/default
@@ -20,6 +22,7 @@ jobs:
       - store_test_results:
           path: coverage/tests-report.xml
       - codecov/upload
+
 workflows:
   tests:
     jobs:
