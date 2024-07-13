@@ -37,6 +37,13 @@ npm run test          # run all tests
 npm run test:coverate # run tests and generate coverage report under ./coverage
 ```
 
+## Docker
+
+```
+docker build -t planner-api:v1 .
+docker run -d --name planner-api -p 3333:3333 planner-api:v1
+```
+
 ## Tools
 
 - **Fastify**: As web api framework.
@@ -52,13 +59,6 @@ npm run test:coverate # run tests and generate coverage report under ./coverage
 - **Pino**: As logger library.
 - **commitlint**: To force conventional commits.
 - **husky**: To force hooks before push (test and commit message).
-
-## Docker
-
-```
-docker build -t planner-api:v1 .
-docker run -d --name planner-api -p 3333:3333 planner-api:v1
-```
 
 ## Roadmap
 
