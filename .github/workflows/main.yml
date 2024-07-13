@@ -28,3 +28,9 @@ jobs:
 
       - name: Build docker image
         run: docker build -t heldercostaa/planner-api:${{ steps.generate_sha.outputs.sha }} .
+
+      - name: Push image
+        run: |
+          docker push heldercostaa/planner-api:${{ steps.generate_sha.outputs.sha }}
+          docker tag heldercostaa/planner-api:${{ steps.generate_sha.outputs.sha }} heldercostaa/planner-api:latest
+          docker push heldercostaa/planner-api:latest
