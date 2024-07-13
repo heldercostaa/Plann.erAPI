@@ -21,8 +21,8 @@ COPY --from=builder /app/package.json ./package.json
 COPY --from=builder /app/prisma/schema.prisma ./prisma/schema.prisma
 COPY --from=builder /app/prisma/migrations ./prisma/migrations
 
-EXPOSE 3333
-
 RUN npx prisma migrate deploy
+
+EXPOSE 3333
 
 CMD [ "npm", "start" ]
