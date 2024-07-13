@@ -16,7 +16,7 @@ const envSchema = z.object({
   LOG_LEVEL: z
     .enum(["silent", "trace", "debug", "info", "warn", "error", "fatal"])
     .default("info"),
-  DATABASE_LOG_LEVEL: z.enum(["query", "info", "warn", "error"]).optional(),
+  DB_LOG_LEVEL: z.enum(["query", "info", "warn", "error"]).optional(),
 });
 
 const _env = envSchema.safeParse(process.env);

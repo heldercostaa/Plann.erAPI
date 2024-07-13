@@ -54,6 +54,13 @@ npm run test:coverate # run tests and generate coverage report under ./coverage
 - **commitlint**: To force conventional commits.
 - **husky**: To force hooks before push (test and commit message).
 
+## Docker
+
+```
+docker build -t planner-api:1.0 .
+docker run -d --name planner-api -p 3333:3333 planner-api:1.0
+```
+
 ## Roadmap
 
 - [ ] Deploy the application live
