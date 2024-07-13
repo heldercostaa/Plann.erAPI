@@ -61,11 +61,11 @@ jobs:
 
       - name: Build and push
         uses: docker/build-push-action@v6
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
         with:
           context: .
           push: true
+          secrets: |
+            DATABASE_URL=${{ secrets.DATABASE_URL }}
           tags: |
             heldercostaa/planner-api:${{ steps.generate_sha.outputs.sha }},
             heldercostaa/planner-api:latest
