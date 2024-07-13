@@ -2,11 +2,10 @@
 
 [![Maintainer](https://img.shields.io/badge/maintainer-%40heldercostaa-blue?logo=superuser&logoColor=white)](https://github.com/heldercostaa)
 ![Language](https://img.shields.io/badge/language-typescript-yellow?logo=ts-node&logoColor=white)
-[![CircleCI](https://circleci.com/gh/heldercostaa/Plann.erAPI.svg?style=shield)](https://app.circleci.com/pipelines/github/heldercostaa/Plann.erAPI)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/heldercostaa/Plann.erAPI/main.yml?branch=main&logo=dependabot&logoColor=white)](https://github.com/heldercostaa/Plann.erAPI)
 [![codecov](https://codecov.io/github/heldercostaa/Plann.erAPI/graph/badge.svg?token=AXVY2L9IAS)](https://codecov.io/github/heldercostaa/Plann.erAPI)
+[![CircleCI](https://circleci.com/gh/heldercostaa/Plann.erAPI.svg?style=shield)](https://app.circleci.com/pipelines/github/heldercostaa/Plann.erAPI)
 [![Last commit](https://img.shields.io/github/last-commit/heldercostaa/Plann.erAPI.svg?logo=github&logoColor=white)](https://github.com/heldercostaa/Plann.erAPI/commits/main)
-
-<!-- [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/heldercostaa/Plann.erAPI/main.yml?branch=main&logo=dependabot&logoColor=white)](https://github.com/heldercostaa/Plann.erAPI) -->
 
 API for Plann.er App.
 
