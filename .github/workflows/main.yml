@@ -64,8 +64,6 @@ jobs:
         with:
           context: .
           push: true
-          secrets: |
-            DATABASE_URL=${{ secrets.DATABASE_URL }}
           tags: |
             heldercostaa/planner-api:${{ steps.generate_sha.outputs.sha }},
             heldercostaa/planner-api:latest
