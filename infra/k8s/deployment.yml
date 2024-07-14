@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: planner-api
-          image: heldercostaa/planner-api:b5293cf
+          image: heldercostaa/planner-api:b838035
           env:
             # Api
             - name: NODE_ENV

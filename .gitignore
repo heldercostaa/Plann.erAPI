@@ -16,4 +16,4 @@ dist
 coverage
 
 # Kubernetes
-infra/k8s/secrets.yml
+*secrets.yml
