@@ -25,9 +25,6 @@ COPY --from=builder /app/*.env .
 COPY --from=builder /app/package.json .
 COPY --from=builder /app/prisma/schema.prisma ./prisma/
 
-# Review if this is the best place to have this
-# RUN npx prisma migrate deploy
-
 EXPOSE 3333
 
 CMD ["npm", "start"]
