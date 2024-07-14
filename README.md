@@ -61,7 +61,4 @@ docker run -d --name planner-api -p 3333:3333 planner-api:v1
 
 ## Roadmap
 
-- [ ] Deploy the application live
 - [ ] Improve readme by adding pictures (use FE)
-- [ ] (Infra) Move non-sensitive env vars from secrets to config maps
-- [ ] (Infra) Check and maybe implement livinessProbe
