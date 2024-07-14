@@ -18,6 +18,7 @@ import { getParticipant } from "./routes/get-participant";
 import { getParticipants } from "./routes/get-participants";
 import { getTrip } from "./routes/get-trip";
 import { updateTrip } from "./routes/update-trip";
+import { removeParticipant } from "./routes/remove-participant";
 
 export const app = fastify();
 
@@ -44,3 +45,4 @@ app.register(getParticipants);
 app.register(createInvite);
 app.register(updateTrip);
 app.register(getParticipant);
+app.register(removeParticipant);
