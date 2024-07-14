@@ -90,3 +90,15 @@ jobs:
           tags: |
             heldercostaa/planner-api:${{ steps.generate_sha.outputs.sha }},
             heldercostaa/planner-api:latest
+
+      - name: Update helm tag
+        uses: fjogeleit/yaml-update-action@main
+        with:
+          branch: release
+          targetBranch: main
+          createPR: true
+          valueFile: "deploy/helm/values.yaml"
+          propertyPath: "image.tag"
+          value: ${{ steps.generate_sha.outputs.sha }}
+          commitChange: true
+          message: "ci: update tag in helm values"
