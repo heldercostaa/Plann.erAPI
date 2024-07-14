@@ -16,12 +16,7 @@ services:
       # Web
       WEB_BASE_URL: ${WEB_BASE_URL}
       # Database
-      DATABASE_URL: ${DATABASE_URL}
-      DB_HOST: ${DB_HOST}
-      DB_NAME: ${DB_NAME}
-      DB_USER: ${DB_USER}
-      DB_PASSWORD: ${DB_PASSWORD}
-      DB_PORT: ${DB_PORT}
+      DB_URL: ${DB_URL}
       DB_LOG_LEVEL: ${DB_LOG_LEVEL}
     networks:
       - planner
@@ -31,11 +26,11 @@ services:
     image: postgres:16.3-alpine
     restart: always
     ports:
-      - ${DB_PORT}:5432
+      - 5432:5432
     environment:
-      POSTGRES_DB: ${DB_NAME}
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: "planner"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
     volumes:
       - pg_data:/var/lib/postgresql/data
     networks:
@@ -48,9 +43,9 @@ services:
     ports:
       - 5433:5432
     environment:
-      POSTGRES_DB: ${DB_NAME}
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: "planner"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
     networks:
       - planner
 

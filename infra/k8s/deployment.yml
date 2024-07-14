@@ -48,36 +48,11 @@ spec:
                   name: api-vars
                   key: WEB_BASE_URL
             # Database
-            - name: DATABASE_URL
+            - name: DB_URL
               valueFrom:
                 secretKeyRef:
                   name: api-vars
-                  key: DATABASE_URL
-            - name: DB_HOST
-              valueFrom:
-                secretKeyRef:
-                  name: api-vars
-                  key: DB_HOST
-            - name: DB_NAME
-              valueFrom:
-                secretKeyRef:
-                  name: api-vars
-                  key: DB_NAME
-            - name: DB_USER
-              valueFrom:
-                secretKeyRef:
-                  name: api-vars
-                  key: DB_USER
-            - name: DB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: api-vars
-                  key: DB_PASSWORD
-            - name: DB_PORT
-              valueFrom:
-                secretKeyRef:
-                  name: api-vars
-                  key: DB_PORT
+                  key: DB_URL
             - name: DB_LOG_LEVEL
               valueFrom:
                 secretKeyRef:
