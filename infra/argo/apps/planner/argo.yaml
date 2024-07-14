@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: https://github.com/heldercostaa/Plann.erAPI.git
     targetRevision: HEAD
-    path: ./deploy/helm
+    path: ./infra/helm
   destination:
     server: https://kubernetes.default.svc
     namespace: planner
