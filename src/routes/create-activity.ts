@@ -29,10 +29,6 @@ export async function createActivity(app: FastifyInstance) {
         throw new ClientError("Trip not found");
       }
 
-      if (dayjs(occursAt).isBefore(dayjs(trip.startsAt))) {
-        throw new ClientError("Invalid activity date");
-      }
-
       if (dayjs(occursAt).isAfter(dayjs(trip.endsAt))) {
         throw new ClientError("Invalid activity date");
       }
