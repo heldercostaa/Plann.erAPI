@@ -79,8 +79,8 @@ describe("Update trip", () => {
         endsAt: dayjs().add(15, "day"),
       });
 
-    expect(response.statusCode).toBe(400);
     expect(response.body.message).toBe("Trip not found");
+    expect(response.statusCode).toBe(400);
   });
 
   it("should not be able to update a trip if destination too small", async () => {
@@ -112,8 +112,6 @@ describe("Update trip", () => {
     const response = await request(app.server)
       .put(`/trips/${tripId}`)
       .send({ startsAt: dayjs().add(-1, "day") });
-
-    console.log("[DEBUG] response.body: ", response.body);
 
     expect(response.statusCode).toBe(200);
     expect(response.body.tripId).toBeDefined();
