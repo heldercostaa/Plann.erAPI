@@ -7,7 +7,7 @@ metadata:
     app: planner
 
 spec:
-  replicas: 5
+  replicas: 3
   selector:
     matchLabels:
       app: planner
@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: planner-api
-          image: heldercostaa/planner-api:86dc681
+          image: heldercostaa/planner-api:b5293cf
           env:
             # Api
             - name: NODE_ENV
