@@ -30,10 +30,6 @@ export async function updateTrip(app: FastifyInstance) {
         throw new ClientError("Trip not found");
       }
 
-      if (dayjs(startsAt).isBefore(new Date())) {
-        throw new ClientError("Invalid trip start date");
-      }
-
       if (dayjs(endsAt).isBefore(dayjs(startsAt))) {
         throw new ClientError("Invalid trip end date");
       }

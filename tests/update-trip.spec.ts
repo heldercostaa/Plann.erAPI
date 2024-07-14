@@ -95,7 +95,7 @@ describe("Update trip", () => {
     });
   });
 
-  it("should not be able to update a trip if invalid start date", async () => {
+  it("should be able to update a trip if start date before today", async () => {
     const createTripResponse = await request(app.server)
       .post("/trips")
       .send({
@@ -113,8 +113,8 @@ describe("Update trip", () => {
       .put(`/trips/${tripId}`)
       .send({ startsAt: dayjs().add(-1, "day") });
 
-    expect(response.statusCode).toBe(400);
-    expect(response.body.message).toEqual("Invalid trip start date");
+    expect(response.statusCode).toBe(200);
+    expect(response.body.tripId).toBeDefined();
   });
 
   it("should not be able to update a trip if invalid end date", async () => {
