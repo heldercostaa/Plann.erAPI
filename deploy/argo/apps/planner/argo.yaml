@@ -8,7 +8,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: git@github.com:heldercostaa/Plann.erAPI.git
+    repoURL: https://github.com/heldercostaa/Plann.erAPI.git
     targetRevision: HEAD
     path: ./deploy/helm
   destination:

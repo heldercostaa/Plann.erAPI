@@ -4,7 +4,7 @@ image:
   repository: heldercostaa/planner-api
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "b838035"
+  tag: "a86ff6e"
   containerPort: 3333
 
 imagePullSecrets: []
