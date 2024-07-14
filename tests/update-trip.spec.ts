@@ -113,6 +113,8 @@ describe("Update trip", () => {
       .put(`/trips/${tripId}`)
       .send({ startsAt: dayjs().add(-1, "day") });
 
+    console.log("[DEBUG] response.body: ", response.body);
+
     expect(response.statusCode).toBe(200);
     expect(response.body.tripId).toBeDefined();
   });
