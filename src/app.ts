@@ -18,6 +18,7 @@ import { getParticipant } from "./routes/get-participant";
 import { getParticipants } from "./routes/get-participants";
 import { getTrip } from "./routes/get-trip";
 import { removeActivity } from "./routes/remove-activity";
+import { removeLink } from "./routes/remove-link";
 import { removeParticipant } from "./routes/remove-participant";
 import { updateTrip } from "./routes/update-trip";
 
@@ -48,3 +49,4 @@ app.register(updateTrip);
 app.register(getParticipant);
 app.register(removeParticipant);
 app.register(removeActivity);
+app.register(removeLink);
