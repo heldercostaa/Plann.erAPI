@@ -2,7 +2,7 @@ replicaCount: 3
 image:
   repository: heldercostaa/planner-api
   pullPolicy: IfNotPresent
-  tag: '4014893'
+  tag: ada6751
   containerPort: 3333
 imagePullSecrets: []
 nameOverride: ''
