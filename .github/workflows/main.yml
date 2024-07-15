@@ -89,6 +89,7 @@ jobs:
       #   with:
       #     context: .
       #     push: true
+      #     target: prod
       #     tags: |
       #       heldercostaa/planner-api:${{ steps.generate_sha.outputs.sha }},
       #       heldercostaa/planner-api:latest
