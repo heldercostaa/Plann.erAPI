@@ -24,6 +24,10 @@ export async function getParticipants(app: FastifyInstance) {
               name: true,
               email: true,
               isConfirmed: true,
+              isOwner: true,
+            },
+            orderBy: {
+              isOwner: "desc",
             },
           },
         },

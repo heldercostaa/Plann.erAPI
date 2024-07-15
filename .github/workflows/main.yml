@@ -69,7 +69,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Maybe add step to run migrations?
       - name: Run production migrations
         run: npx prisma migrate deploy
 
