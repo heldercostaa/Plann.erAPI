@@ -24,7 +24,7 @@ vi.mock("nodemailer", () => {
   };
 });
 
-describe("Remove participant", () => {
+describe("Remove activity", () => {
   beforeAll(async () => {
     await app.ready();
   });
@@ -37,7 +37,7 @@ describe("Remove participant", () => {
     await resetDb();
   });
 
-  it("should be able to remove a participant from a trip", async () => {
+  it("should be able to remove a activity from a trip", async () => {
     const createTripResponse = await request(app.server)
       .post("/trips")
       .send({
@@ -50,33 +50,39 @@ describe("Remove participant", () => {
       });
 
     const tripId = createTripResponse.body.tripId;
+    const createActivityResponse = await request(app.server)
+      .post(`/trips/${tripId}/activities`)
+      .send({
+        title: "Lunch",
+        occursAt: dayjs().add(8, "day"),
+      });
+    const activityId = createActivityResponse.body.activityId;
 
-    const getTripParticipants = await request(app.server).get(
-      `/trips/${tripId}/participants`
+    await request(app.server).delete(`/activities/${activityId}`).expect(200);
+
+    const tripActivitiesResponse = await request(app.server).get(
+      `/trips/${tripId}/activities`
     );
-    const jakeId = getTripParticipants.body.participants.find(
-      (participant: any) => participant.email === "jake.doe@mail.com"
-    ).id;
 
-    await request(app.server).delete(`/participants/${jakeId}`).expect(200);
-
-    const newGetTripParticipants = await request(app.server).get(
-      `/trips/${tripId}/participants`
-    );
-    const deletedJake = newGetTripParticipants.body.participants.find(
-      (participant: any) => participant.email === "jake.doe@mail.com"
-    )?.id;
-
-    expect(deletedJake).toBeUndefined();
+    expect(tripActivitiesResponse.body.activities).toEqual([
+      expect.objectContaining({ activities: [] }),
+      expect.objectContaining({ activities: [] }),
+      expect.objectContaining({ activities: [] }),
+      expect.objectContaining({ activities: [] }),
+      expect.objectContaining({ activities: [] }),
+      expect.objectContaining({ activities: [] }),
+      expect.objectContaining({ activities: [] }),
+      expect.objectContaining({ activities: [] }),
+    ]);
   });
 
-  it("should not be able to delete a non existing participant", async () => {
-    const participantId = "00000000-0000-0000-0000-000000000000";
+  it("should not be able to delete a non existing activity", async () => {
+    const activityId = "00000000-0000-0000-0000-000000000000";
     const response = await request(app.server).delete(
-      `/participants/${participantId}`
+      `/activities/${activityId}`
     );
 
-    expect(response.body.message).toBe("Participant not found");
+    expect(response.body.message).toBe("Activity not found");
     expect(response.statusCode).toBe(400);
   });
 });
