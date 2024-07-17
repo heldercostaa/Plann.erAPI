@@ -4,7 +4,7 @@ export default defineConfig({
   test: {
     fileParallelism: false,
     clearMocks: true,
-    reporters: ["verbose", "junit"],
+    reporters: ["verbose"],
     outputFile: "coverage/junit.xml",
     coverage: {
       provider: "v8",
