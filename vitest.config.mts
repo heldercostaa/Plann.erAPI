@@ -9,6 +9,7 @@ export default defineConfig({
     coverage: {
       provider: "v8",
       include: ["src/app.ts", "src/lib", "src/routes"],
+      exclude: ["src/lib/mail.ts"],
     },
   },
 });
