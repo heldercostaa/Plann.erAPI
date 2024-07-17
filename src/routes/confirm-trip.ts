@@ -35,7 +35,7 @@ export async function confirmTrip(app: FastifyInstance) {
         }
 
         if (trip.isConfirmed) {
-          return reply.redirect(`${env.WEB_BASE_URL}/trips/${tripId}`);
+          return reply.redirect(`${env.WEB_BASE_URL}/#/trips/${tripId}`);
         }
 
         await prisma.trip.update({
@@ -71,7 +71,7 @@ export async function confirmTrip(app: FastifyInstance) {
           })
         );
 
-        return reply.redirect(`${env.WEB_BASE_URL}/trips/${tripId}`);
+        return reply.redirect(`${env.WEB_BASE_URL}/#/trips/${tripId}`);
       }
     );
 }

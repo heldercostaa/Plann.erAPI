@@ -92,7 +92,7 @@ describe("Create invite", () => {
       .post(`/trips/${tripId}/invites`)
       .send({ email: "sarah.doe@mail.com" });
 
-    const confirmationUrl = `${env.WEB_BASE_URL}/trips/${tripId}`;
+    const confirmationUrl = `${env.WEB_BASE_URL}/#/trips/${tripId}`;
 
     expect(sendMailMock).toHaveBeenCalledOnce();
     expect(sendMailMock).toHaveBeenCalledWith({
