@@ -6,36 +6,34 @@ import { ClientError } from "../errors/client-error";
 import { prisma } from "../lib/prisma";
 
 export async function confirmParticipant(app: FastifyInstance) {
-  app
-    .withTypeProvider<ZodTypeProvider>()
-    .get(
-      "/participants/:participantId/confirm",
-      { schema: { params: z.object({ participantId: z.string().uuid() }) } },
-      async (request, reply) => {
-        const { participantId } = request.params;
+  app.withTypeProvider<ZodTypeProvider>().post(
+    "/participants/:participantId/confirm",
+    {
+      schema: {
+        params: z.object({ participantId: z.string().uuid() }),
+        body: z.object({
+          name: z.string(),
+        }),
+      },
+    },
+    async (request, reply) => {
+      const { participantId } = request.params;
+      const { name } = request.body;
 
-        const participant = await prisma.participant.findUnique({
-          where: { id: participantId },
-        });
+      const participant = await prisma.participant.findUnique({
+        where: { id: participantId },
+      });
 
-        if (!participant) {
-          throw new ClientError("Participant not found");
-        }
-
-        if (participant.isConfirmed) {
-          return reply.redirect(
-            `${env.WEB_BASE_URL}/trips/${participant.tripId}`
-          );
-        }
-
-        await prisma.participant.update({
-          where: { id: participantId },
-          data: { isConfirmed: true },
-        });
-
-        return reply.redirect(
-          `${env.WEB_BASE_URL}/trips/${participant.tripId}`
-        );
+      if (!participant) {
+        throw new ClientError("Participant not found");
       }
-    );
+
+      await prisma.participant.update({
+        where: { id: participantId },
+        data: { isConfirmed: true, name },
+      });
+
+      return reply.send();
+    }
+  );
 }

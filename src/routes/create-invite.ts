@@ -42,7 +42,7 @@ export async function createInvite(app: FastifyInstance) {
 
       const mail = await getMailClient();
 
-      const confirmationUrl = `${env.API_BASE_URL}/participants/${participant.id}/confirm`;
+      const confirmationUrl = `${env.WEB_BASE_URL}/trips/${tripId}`;
 
       const message = await mail.sendMail({
         from: {
@@ -55,10 +55,10 @@ export async function createInvite(app: FastifyInstance) {
           <div style="font-family: sans-serif; font-size: 16px; line-height: 1.6;">
             <p>You were invited to participate in a trip to <strong>${trip.destination}</strong> between <strong>${formattedStartDate}</strong> and <strong>${formattedEndDate}</strong>.</p>
             <p></p>
-            <p>To confirm your present in the trip, click the link below:</p>
+            <p>To confirm your present in the trip, access the link below and fill your name under the "Manage guests" section:</p>
             <p></p>
             <p>
-              <a href="${confirmationUrl}">Confirm trip</a>
+              <a href="${confirmationUrl}">Access your trip</a>
             </p>
             <p></p>
             <p>If you don't know what this email is about, please disconsider this message.</p>

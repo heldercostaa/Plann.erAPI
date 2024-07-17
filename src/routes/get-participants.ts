@@ -26,9 +26,7 @@ export async function getParticipants(app: FastifyInstance) {
               isConfirmed: true,
               isOwner: true,
             },
-            orderBy: {
-              isOwner: "desc",
-            },
+            orderBy: [{ isOwner: "desc" }, { isConfirmed: "desc" }],
           },
         },
       });

@@ -63,5 +63,4 @@ docker run -d --name planner-api -p 3333:3333 planner-api:v1
 
 - [ ] Improve readme by adding pictures (use FE)
 - [ ] Update .postman files
-- [ ] Adjust deploy
-- [ ] Refactor applications into Services
+- [ ] Check way to send real email

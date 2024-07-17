@@ -87,11 +87,11 @@ describe("Create invite", () => {
     const formattedEndDate = dayjs(dayjs().add(14, "day")).format("LL");
 
     const tripId = createTripResponse.body.tripId;
-    const response = await request(app.server)
+    await request(app.server)
       .post(`/trips/${tripId}/invites`)
       .send({ email: "sarah.doe@mail.com" });
 
-    const confirmationUrl = `${env.API_BASE_URL}/participants/${response.body.participantId}/confirm`;
+    const confirmationUrl = `${env.WEB_BASE_URL}/trips/${tripId}`;
 
     expect(sendMailMock).toHaveBeenCalledOnce();
     expect(sendMailMock).toHaveBeenCalledWith({
@@ -105,10 +105,10 @@ describe("Create invite", () => {
           <div style="font-family: sans-serif; font-size: 16px; line-height: 1.6;">
             <p>You were invited to participate in a trip to <strong>Fortaleza</strong> between <strong>${formattedStartDate}</strong> and <strong>${formattedEndDate}</strong>.</p>
             <p></p>
-            <p>To confirm your present in the trip, click the link below:</p>
+            <p>To confirm your present in the trip, access the link below and fill your name under the \"Manage guests\" section:</p>
             <p></p>
             <p>
-              <a href="${confirmationUrl}">Confirm trip</a>
+              <a href="${confirmationUrl}">Access your trip</a>
             </p>
             <p></p>
             <p>If you don't know what this email is about, please disconsider this message.</p>
