@@ -8,6 +8,7 @@
   },
   "scripts": {
     "dev": "tsx watch src/server.ts",
+    "dev:docker": "docker compose up -d",
     "build": "tsup src",
     "start": "node dist/server.js",
     "test": "vitest run",

@@ -56,7 +56,7 @@ services:
       target: dev
     command: npx prisma migrate dev
     environment:
-      DB_URL: ${DOCKER_DB_URL}
+      DB_URL: "postgresql://postgres:postgres@postgres:5432/planner"
     depends_on:
       postgres:
         condition: service_healthy
