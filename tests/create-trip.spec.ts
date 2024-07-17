@@ -11,6 +11,7 @@ import {
 import { app } from "../src/app";
 import { env } from "../src/env";
 import { dayjs } from "../src/lib/dayjs";
+import { confirmTripEmail } from "../src/templates/confirmTripEmail";
 import resetDb from "./helpers/reset-db";
 
 // Mock the nodemailer module
@@ -42,7 +43,7 @@ describe("Create trip", () => {
     const response = await request(app.server)
       .post("/trips")
       .send({
-        destination: "Fortaleza",
+        destination: "Fortaleza, CE",
         startsAt: dayjs().add(7, "day"),
         endsAt: dayjs().add(14, "day"),
         ownerName: "John Doe",
@@ -77,7 +78,7 @@ describe("Create trip", () => {
     const response = await request(app.server)
       .post("/trips")
       .send({
-        destination: "Fortaleza",
+        destination: "Fortaleza, CE",
         startsAt: dayjs().add(-1, "day"),
         endsAt: dayjs().add(14, "day"),
         ownerName: "John Doe",
@@ -93,7 +94,7 @@ describe("Create trip", () => {
     const response = await request(app.server)
       .post("/trips")
       .send({
-        destination: "Fortaleza",
+        destination: "Fortaleza, CE",
         startsAt: dayjs().add(7, "day"),
         endsAt: dayjs().add(6, "day"),
         ownerName: "John Doe",
@@ -109,7 +110,7 @@ describe("Create trip", () => {
     const response = await request(app.server)
       .post("/trips")
       .send({
-        destination: "Fortaleza",
+        destination: "Fortaleza, CE",
         startsAt: dayjs().add(7, "day"),
         endsAt: dayjs().add(6, "day"),
         ownerName: "John Doe",
@@ -128,7 +129,7 @@ describe("Create trip", () => {
     const response = await request(app.server)
       .post("/trips")
       .send({
-        destination: "Fortaleza",
+        destination: "Fortaleza, CE",
         startsAt: dayjs().add(7, "day"),
         endsAt: dayjs().add(6, "day"),
         ownerName: "John Doe",
@@ -147,7 +148,7 @@ describe("Create trip", () => {
     const response = await request(app.server)
       .post("/trips")
       .send({
-        destination: "Fortaleza",
+        destination: "Fortaleza, CE",
         startsAt: dayjs().add(7, "day"),
         endsAt: dayjs().add(14, "day"),
         ownerName: "John Doe",
@@ -169,20 +170,13 @@ describe("Create trip", () => {
         address: "john.doe@mail.com",
         name: "John Doe",
       },
-      subject: `Confirm you trip to Fortaleza on ${formattedStartDate}`,
-      html: `
-        <div style="font-family: sans-serif; font-size: 16px; line-height: 1.6;">
-          <p>You requested a trip creation to <strong>Fortaleza</strong> between <strong>${formattedStartDate}</strong> and <strong>${formattedEndDate}</strong>.</p>
-          <p></p>
-          <p>To confirm and plan your trip, click the link below:</p>
-          <p></p>
-          <p>
-            <a href="${confirmationUrl}">Confirm trip</a>
-          </p>
-          <p></p>
-          <p>If you don't know what this email is about, please disconsider this message.</p>
-        </div>
-        `.trim(),
+      subject: `Confirm you trip to Fortaleza, CE on ${formattedStartDate}`,
+      html: confirmTripEmail({
+        confirmationUrl,
+        formattedStartDate,
+        formattedEndDate,
+        destination: "Fortaleza, CE",
+      }),
     });
   });
 });

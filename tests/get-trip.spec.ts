@@ -44,7 +44,7 @@ describe("Get trip", () => {
     const createTripResponse = await request(app.server)
       .post("/trips")
       .send({
-        destination: "Fortaleza",
+        destination: "Fortaleza, CE",
         startsAt,
         endsAt,
         ownerName: "John Doe",
@@ -68,7 +68,7 @@ describe("Get trip", () => {
     const response = await request(app.server).get(`/trips/${tripId}`);
     expect(response.body.trip).toEqual(
       expect.objectContaining({
-        destination: "Fortaleza",
+        destination: "Fortaleza, CE",
         startsAt: startsAt.toISOString(),
         endsAt: endsAt.toISOString(),
         isConfirmed: false,

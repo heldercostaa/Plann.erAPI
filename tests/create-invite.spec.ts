@@ -9,9 +9,10 @@ import {
   vi,
 } from "vitest";
 import { app } from "../src/app";
-import { dayjs } from "../src/lib/dayjs";
-import resetDb from "./helpers/reset-db";
 import { env } from "../src/env";
+import { dayjs } from "../src/lib/dayjs";
+import { confirmParticipationEmail } from "../src/templates/confirmParticipationEmail";
+import resetDb from "./helpers/reset-db";
 
 // Mock the nodemailer module
 const sendMailMock = vi.fn();
@@ -42,7 +43,7 @@ describe("Create invite", () => {
     const createTripResponse = await request(app.server)
       .post("/trips")
       .send({
-        destination: "Fortaleza",
+        destination: "Fortaleza, CE",
         startsAt: dayjs().add(7, "day"),
         endsAt: dayjs().add(14, "day"),
         ownerName: "John Doe",
@@ -73,7 +74,7 @@ describe("Create invite", () => {
     const createTripResponse = await request(app.server)
       .post("/trips")
       .send({
-        destination: "Fortaleza",
+        destination: "Fortaleza, CE",
         startsAt: dayjs().add(7, "day"),
         endsAt: dayjs().add(14, "day"),
         ownerName: "John Doe",
@@ -100,19 +101,13 @@ describe("Create invite", () => {
         address: "hello@plann.er",
       },
       to: "sarah.doe@mail.com",
-      subject: `Confirm your presence to Fortaleza on ${formattedStartDate}`,
-      html: `
-          <div style="font-family: sans-serif; font-size: 16px; line-height: 1.6;">
-            <p>You were invited to participate in a trip to <strong>Fortaleza</strong> between <strong>${formattedStartDate}</strong> and <strong>${formattedEndDate}</strong>.</p>
-            <p></p>
-            <p>To confirm your present in the trip, access the link below and fill your name under the \"Manage guests\" section:</p>
-            <p></p>
-            <p>
-              <a href="${confirmationUrl}">Access your trip</a>
-            </p>
-            <p></p>
-            <p>If you don't know what this email is about, please disconsider this message.</p>
-          </div>`.trim(),
+      subject: `Confirm your presence to Fortaleza, CE on ${formattedStartDate}`,
+      html: confirmParticipationEmail({
+        confirmationUrl,
+        destination: "Fortaleza, CE",
+        formattedEndDate,
+        formattedStartDate,
+      }),
     });
   });
 
@@ -120,7 +115,7 @@ describe("Create invite", () => {
     const createTripResponse = await request(app.server)
       .post("/trips")
       .send({
-        destination: "Fortaleza",
+        destination: "Fortaleza, CE",
         startsAt: dayjs().add(7, "day"),
         endsAt: dayjs().add(14, "day"),
         ownerName: "John Doe",

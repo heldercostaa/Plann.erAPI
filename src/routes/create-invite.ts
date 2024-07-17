@@ -8,6 +8,7 @@ import { dayjs } from "../lib/dayjs";
 import { getMailClient } from "../lib/mail";
 import { logger } from "../lib/pino";
 import { prisma } from "../lib/prisma";
+import { confirmParticipationEmail } from "../templates/confirmParticipationEmail";
 
 export async function createInvite(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().post(
@@ -51,23 +52,15 @@ export async function createInvite(app: FastifyInstance) {
         },
         to: participant.email,
         subject: `Confirm your presence to ${trip.destination} on ${formattedStartDate}`,
-        html: `
-          <div style="font-family: sans-serif; font-size: 16px; line-height: 1.6;">
-            <p>You were invited to participate in a trip to <strong>${trip.destination}</strong> between <strong>${formattedStartDate}</strong> and <strong>${formattedEndDate}</strong>.</p>
-            <p></p>
-            <p>To confirm your present in the trip, access the link below and fill your name under the "Manage guests" section:</p>
-            <p></p>
-            <p>
-              <a href="${confirmationUrl}">Access your trip</a>
-            </p>
-            <p></p>
-            <p>If you don't know what this email is about, please disconsider this message.</p>
-          </div>`.trim(),
+        html: confirmParticipationEmail({
+          confirmationUrl,
+          destination: trip.destination,
+          formattedEndDate,
+          formattedStartDate,
+        }),
       });
 
-      logger.info(
-        `Email preview link: ${nodemailer.getTestMessageUrl(message)}`
-      );
+      logger.info(`Sent participation email to: ${participant.email}`);
 
       return reply.send({ participantId: participant.id });
     }

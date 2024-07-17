@@ -42,7 +42,7 @@ describe("Confirm participant", () => {
     const createTripResponse = await request(app.server)
       .post("/trips")
       .send({
-        destination: "Fortaleza",
+        destination: "Fortaleza, CE",
         startsAt: dayjs().add(7, "day"),
         endsAt: dayjs().add(14, "day"),
         ownerName: "John Doe",

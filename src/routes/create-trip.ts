@@ -8,6 +8,7 @@ import { dayjs } from "../lib/dayjs";
 import { getMailClient } from "../lib/mail";
 import { logger } from "../lib/pino";
 import { prisma } from "../lib/prisma";
+import { confirmTripEmail } from "../templates/confirmTripEmail";
 
 export async function createTrip(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().post(
@@ -75,24 +76,15 @@ export async function createTrip(app: FastifyInstance) {
           address: ownerEmail,
         },
         subject: `Confirm you trip to ${destination} on ${formattedStartDate}`,
-        html: `
-        <div style="font-family: sans-serif; font-size: 16px; line-height: 1.6;">
-          <p>You requested a trip creation to <strong>${destination}</strong> between <strong>${formattedStartDate}</strong> and <strong>${formattedEndDate}</strong>.</p>
-          <p></p>
-          <p>To confirm and plan your trip, click the link below:</p>
-          <p></p>
-          <p>
-            <a href="${confirmationUrl}">Confirm trip</a>
-          </p>
-          <p></p>
-          <p>If you don't know what this email is about, please disconsider this message.</p>
-        </div>
-        `.trim(),
+        html: confirmTripEmail({
+          destination,
+          confirmationUrl,
+          formattedStartDate,
+          formattedEndDate,
+        }),
       });
 
-      logger.info(
-        `Email preview link: ${nodemailer.getTestMessageUrl(message)}`
-      );
+      logger.info(`Sent trip creation email to: ${ownerEmail}`);
 
       return reply.status(201).send({ tripId: trip.id });
     }

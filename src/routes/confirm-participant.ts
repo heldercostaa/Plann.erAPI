@@ -1,7 +1,6 @@
 import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { z } from "zod";
-import { env } from "../env";
 import { ClientError } from "../errors/client-error";
 import { prisma } from "../lib/prisma";
 
