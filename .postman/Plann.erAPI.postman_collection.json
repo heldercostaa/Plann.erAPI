@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "7c602127-2e2d-491a-b1b8-f2eee932e24a",
 		"name": "Plann.erAPI",
-		"description": "API for Plann.er.\n\nGithub repo: [https://github.com/heldercostaa/Plann.erAPI](https://github.com/heldercostaa/Plann.erAPI)",
+		"description": "## API documentation with request examples for Plann.er App.\n\n_Live API_: [https://plann-erapi.onrender.com](https://plann-erapi.onrender.com/)\n\n_Live Frontend_: [https://planner-heldercosta.vercel.app/](https://planner-heldercosta.vercel.app/)\n\n_Github repo_: [https://github.com/heldercostaa/Plann.erAPI](https://github.com/heldercostaa/Plann.erAPI)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "8553383"
 	},
@@ -17,7 +17,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"destination\": \"Fortaleza\",\r\n    \"startsAt\": \"2024-12-01T13:00:00Z\",\r\n    \"endsAt\": \"2024-12-14T18:00:00Z\",\r\n    \"ownerName\": \"Helder Costa\",\r\n    \"ownerEmail\": \"helderlpcosta@gmail.com\",\r\n    \"emailsToInvite\": [\r\n        \"john.doe@mail.com\",\r\n        \"jake.doe@mail.com\"\r\n    ]\r\n}",
+							"raw": "{\r\n    \"destination\": \"Hogwarts, Scotland\",\r\n    \"startsAt\": \"2024-07-01\",\r\n    \"endsAt\": \"2024-07-07\",\r\n    \"ownerName\": \"Harry Potter\",\r\n    \"ownerEmail\": \"harry.potter@mail.com\",\r\n    \"emailsToInvite\": [\r\n        \"ron.weasley@mail.com\",\r\n        \"hermione.granger@mail.com\"\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -32,9 +32,287 @@
 							"path": [
 								"trips"
 							]
+						},
+						"description": "Create a trip and send confirmation email to trip owner."
+					},
+					"response": [
+						{
+							"name": "Create a trip",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"destination\": \"Hogwarts, Scotland\",\r\n    \"startsAt\": \"2024-07-01\",\r\n    \"endsAt\": \"2024-07-07\",\r\n    \"ownerName\": \"Harry Potter\",\r\n    \"ownerEmail\": \"harry.potter@mail.com\",\r\n    \"emailsToInvite\": [\r\n        \"ron.weasley@mail.com\",\r\n        \"hermione.granger@mail.com\"\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "/trips",
+									"path": [
+										"trips"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"destination\": \"Hogwarts, Scotland\",\n    \"startsAt\": \"2024-07-01\",\n    \"endsAt\": \"2024-07-07\",\n    \"ownerName\": \"Harry Potter\",\n    \"ownerEmail\": \"harry.potter@mail.com\",\n    \"emailsToInvite\": [\n        \"ron.weasley@mail.com\",\n        \"hermione.granger@mail.com\"\n    ]\n}"
+						},
+						{
+							"name": "Invalid trip destination",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"destination\": \"Hog\",\r\n    \"startsAt\": \"2024-07-01\",\r\n    \"endsAt\": \"2024-07-07\",\r\n    \"ownerName\": \"Harry Potter\",\r\n    \"ownerEmail\": \"harry.potter@mail.com\",\r\n    \"emailsToInvite\": [\r\n        \"ron.weasley@mail.com\",\r\n        \"hermione.granger@mail.com\"\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/trips",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"trips"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Invalid input\",\n    \"errors\": {\n        \"destination\": [\n            \"String must contain at least 4 character(s)\"\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get trip",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/trips/bb8c0228-1a68-41f4-beec-9455062f664d",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"trips",
+								"bb8c0228-1a68-41f4-beec-9455062f664d"
+							]
+						},
+						"description": "Get trip information, including participants, activities and links."
+					},
+					"response": [
+						{
+							"name": "Get trip",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "/trips/a62e7f22-1952-4f9e-8ede-09b561e57ad6",
+									"path": [
+										"trips",
+										"a62e7f22-1952-4f9e-8ede-09b561e57ad6"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"trip\": {\n        \"id\": \"bb8c0228-1a68-41f4-beec-9455062f664d\",\n        \"destination\": \"Hogwarts, Scotland\",\n        \"startsAt\": \"2024-07-01T00:00:00.000Z\",\n        \"endsAt\": \"2024-07-08T00:00:00.000Z\",\n        \"isConfirmed\": true,\n        \"createdAt\": \"2024-07-17T21:26:14.201Z\",\n        \"participants\": [\n            {\n                \"id\": \"a5b10ed8-9fae-4e8d-8774-c2c743ff7b32\",\n                \"name\": \"Harry Potter\",\n                \"email\": \"harry.potter@mail.com\",\n                \"isConfirmed\": true,\n                \"isOwner\": true,\n                \"tripId\": \"bb8c0228-1a68-41f4-beec-9455062f664d\"\n            },\n            {\n                \"id\": \"75f2499c-eaa7-4138-9df4-804456da6e04\",\n                \"name\": \"Hermione Granger\",\n                \"email\": \"hermione.granger@mail.com\",\n                \"isConfirmed\": true,\n                \"isOwner\": false,\n                \"tripId\": \"bb8c0228-1a68-41f4-beec-9455062f664d\"\n            },\n            {\n                \"id\": \"b60c501c-6b81-4f6e-954d-eb54f454551d\",\n                \"name\": \"Ron Weasley\",\n                \"email\": \"ron.weasley@mail.com\",\n                \"isConfirmed\": true,\n                \"isOwner\": false,\n                \"tripId\": \"bb8c0228-1a68-41f4-beec-9455062f664d\"\n            }\n        ],\n        \"activities\": [],\n        \"links\": []\n    }\n}"
+						},
+						{
+							"name": "Trip not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/trips/00000000-0000-0000-0000-000000000000",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"trips",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Trip not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Confirm trip",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/trips/bb8c0228-1a68-41f4-beec-9455062f664d/confirm",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"trips",
+								"bb8c0228-1a68-41f4-beec-9455062f664d",
+								"confirm"
+							]
+						},
+						"description": "Confirm a trip and send e-mail invitation to guests."
+					},
+					"response": [
+						{
+							"name": "Confirm trip",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "/trips/a62e7f22-1952-4f9e-8ede-09b561e57ad6/confirm",
+									"path": [
+										"trips",
+										"a62e7f22-1952-4f9e-8ede-09b561e57ad6",
+										"confirm"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Invalid trip uuid",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/trips/invalid-uuid/confirm",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"trips",
+										"invalid-uuid",
+										"confirm"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Invalid input\",\n    \"errors\": {\n        \"tripId\": [\n            \"Invalid uuid\"\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get participants",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/trips/bb8c0228-1a68-41f4-beec-9455062f664d/participants",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"trips",
+								"bb8c0228-1a68-41f4-beec-9455062f664d",
+								"participants"
+							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Get participants",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "/trips/bb8c0228-1a68-41f4-beec-9455062f664d/participants",
+									"path": [
+										"trips",
+										"bb8c0228-1a68-41f4-beec-9455062f664d",
+										"participants"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"participants\": [\n        {\n            \"id\": \"a5b10ed8-9fae-4e8d-8774-c2c743ff7b32\",\n            \"name\": \"Harry Potter\",\n            \"email\": \"harry.potter@mail.com\",\n            \"isConfirmed\": true,\n            \"isOwner\": true\n        },\n        {\n            \"id\": \"75f2499c-eaa7-4138-9df4-804456da6e04\",\n            \"name\": \"Hermione Granger\",\n            \"email\": \"hermione.granger@mail.com\",\n            \"isConfirmed\": true,\n            \"isOwner\": false\n        },\n        {\n            \"id\": \"b60c501c-6b81-4f6e-954d-eb54f454551d\",\n            \"name\": \"Ron Weasley\",\n            \"email\": \"ron.weasley@mail.com\",\n            \"isConfirmed\": true,\n            \"isOwner\": false\n        },\n        {\n            \"id\": \"eb5c7904-1f09-4313-96e6-5549732e7a03\",\n            \"name\": \"Ron Weasley\",\n            \"email\": \"ron.weasley@mail.com\",\n            \"isConfirmed\": true,\n            \"isOwner\": false\n        }\n    ]\n}"
+						}
+					]
 				},
 				{
 					"name": "Update trip",
@@ -43,7 +321,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"destination\": \"Fortaleza\"\r\n}",
+							"raw": "{\r\n    // \"destination\": \"Hogwarts, Scotland\",\r\n    // \"startsAt\": \"2024-07-01\",\r\n    \"endsAt\": \"2024-07-08\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -51,97 +329,269 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/trips/01a2c5d3-4b72-47fb-9d05-fcc8cab70edf",
+							"raw": "{{baseUrl}}/trips/a62e7f22-1952-4f9e-8ede-09b561e57ad6",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"trips",
-								"01a2c5d3-4b72-47fb-9d05-fcc8cab70edf"
+								"a62e7f22-1952-4f9e-8ede-09b561e57ad6"
 							]
-						}
+						},
+						"description": "Update trip destination, start and end dates."
 					},
-					"response": []
-				},
-				{
-					"name": "Confirm trip",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/trips/01a2c5d3-4b72-47fb-9d05-fcc8cab70edf/confirm",
-							"host": [
-								"{{baseUrl}}"
+					"response": [
+						{
+							"name": "Update trip",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    // \"destination\": \"Hogwarts, Scotland\",\r\n    // \"startsAt\": \"2024-07-01\",\r\n    \"endsAt\": \"2024-07-07\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "/trips/a62e7f22-1952-4f9e-8ede-09b561e57ad6",
+									"path": [
+										"trips",
+										"a62e7f22-1952-4f9e-8ede-09b561e57ad6"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
 							],
-							"path": [
-								"trips",
-								"01a2c5d3-4b72-47fb-9d05-fcc8cab70edf",
-								"confirm"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get trip",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/trips/01a2c5d3-4b72-47fb-9d05-fcc8cab70edf",
-							"host": [
-								"{{baseUrl}}"
+							"cookie": [],
+							"body": "{\n    \"tripId\": \"a62e7f22-1952-4f9e-8ede-09b561e57ad6\"\n}"
+						},
+						{
+							"name": "Invalid trip end date",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    // \"destination\": \"Hogwarts, Scotland\",\r\n    // \"startsAt\": \"2024-07-01\",\r\n    \"endsAt\": \"2000-01-01\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/trips/a62e7f22-1952-4f9e-8ede-09b561e57ad6",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"trips",
+										"a62e7f22-1952-4f9e-8ede-09b561e57ad6"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
 							],
-							"path": [
-								"trips",
-								"01a2c5d3-4b72-47fb-9d05-fcc8cab70edf"
-							]
+							"cookie": [],
+							"body": "{\n    \"message\": \"New end date cannot be after current start date\"\n}"
 						}
-					},
-					"response": []
+					]
 				}
-			]
+			],
+			"description": "Requests related to trips, including trip confirmation."
 		},
 		{
 			"name": "Participants",
 			"item": [
 				{
-					"name": "Confirm participant",
+					"name": "Invite participant",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"ron.weasley@mail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "{{baseUrl}}/participants/2125c2d4-662f-4f31-9caf-5cd517ea7631/confirm",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"participants",
-								"2125c2d4-662f-4f31-9caf-5cd517ea7631",
-								"confirm"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get participants",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/trips/01a2c5d3-4b72-47fb-9d05-fcc8cab70edf/participants",
+							"raw": "{{baseUrl}}/trips/{{tripId}}/invites",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"trips",
-								"01a2c5d3-4b72-47fb-9d05-fcc8cab70edf",
-								"participants"
+								"{{tripId}}",
+								"invites"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Invite participant",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"ron.weasley@mail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "/trips/bb8c0228-1a68-41f4-beec-9455062f664d/invites",
+									"path": [
+										"trips",
+										"bb8c0228-1a68-41f4-beec-9455062f664d",
+										"invites"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"participantId\": \"eb5c7904-1f09-4313-96e6-5549732e7a03\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Confirm participant",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Ron Weasley\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/participants/b60c501c-6b81-4f6e-954d-eb54f454551d/confirm",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"participants",
+								"b60c501c-6b81-4f6e-954d-eb54f454551d",
+								"confirm"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Confirm participant",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Ron Weasley\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "/participants/eb5c7904-1f09-4313-96e6-5549732e7a03/confirm",
+									"path": [
+										"participants",
+										"eb5c7904-1f09-4313-96e6-5549732e7a03",
+										"confirm"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Participant not found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Ron Weasley\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/participants/00000000-0000-0000-0000-000000000000/confirm",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"participants",
+										"00000000-0000-0000-0000-000000000000",
+										"confirm"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Participant not found\"\n}"
+						}
+					]
 				},
 				{
 					"name": "Get participant",
@@ -149,47 +599,118 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/participants/e87650df-3e0b-41b8-a6ff-3e68892e2ac5",
+							"raw": "{{baseUrl}}/participants/b60c501c-6b81-4f6e-954d-eb54f454551d",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"participants",
-								"e87650df-3e0b-41b8-a6ff-3e68892e2ac5"
+								"b60c501c-6b81-4f6e-954d-eb54f454551d"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Get participant",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "/participants/eb5c7904-1f09-4313-96e6-5549732e7a03",
+									"path": [
+										"participants",
+										"eb5c7904-1f09-4313-96e6-5549732e7a03"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"participant\": {\n        \"id\": \"eb5c7904-1f09-4313-96e6-5549732e7a03\",\n        \"name\": \"Ron Weasley\",\n        \"email\": \"ron.weasley@mail.com\",\n        \"isConfirmed\": true\n    }\n}"
+						},
+						{
+							"name": "Invalid participant uuid",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/participants/invalid-uuid",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"participants",
+										"invalid-uuid"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Invalid input\",\n    \"errors\": {\n        \"participantId\": [\n            \"Invalid uuid\"\n        ]\n    }\n}"
+						}
+					]
 				},
 				{
-					"name": "Create invite",
+					"name": "Remove participant",
 					"request": {
-						"method": "POST",
+						"method": "DELETE",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"sarah.doe@mail.com\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "{{baseUrl}}/trips/01a2c5d3-4b72-47fb-9d05-fcc8cab70edf/invites",
+							"raw": "{{baseUrl}}/participants/b60c501c-6b81-4f6e-954d-eb54f454551d",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
-								"trips",
-								"01a2c5d3-4b72-47fb-9d05-fcc8cab70edf",
-								"invites"
+								"participants",
+								"b60c501c-6b81-4f6e-954d-eb54f454551d"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Remove participant",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "/participants/b60c501c-6b81-4f6e-954d-eb54f454551d",
+									"path": [
+										"participants",
+										"b60c501c-6b81-4f6e-954d-eb54f454551d"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
 				}
-			]
+			],
+			"description": "Requests related to trip participants (guests)."
 		},
 		{
 			"name": "Activities",
@@ -201,7 +722,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"Museum\",\r\n    \"occursAt\": \"2024-12-03T11:00:00Z\"\r\n}",
+							"raw": "{\r\n    \"title\": \"Quidditch game vs Slytherin\",\r\n    \"occursAt\": \"2024-07-02T11:00:00Z\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -209,18 +730,101 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/trips/01a2c5d3-4b72-47fb-9d05-fcc8cab70edf/activities",
+							"raw": "{{baseUrl}}/trips/bb8c0228-1a68-41f4-beec-9455062f664d/activities",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"trips",
-								"01a2c5d3-4b72-47fb-9d05-fcc8cab70edf",
+								"bb8c0228-1a68-41f4-beec-9455062f664d",
 								"activities"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Create activity",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Quidditch game vs Slytherin\",\r\n    \"occursAt\": \"2024-07-02T11:00:00Z\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/trips/bb8c0228-1a68-41f4-beec-9455062f664d/activities",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"trips",
+										"bb8c0228-1a68-41f4-beec-9455062f664d",
+										"activities"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"activityId\": \"4e4cbfba-dcfc-4f6a-a6bc-2311af28735c\"\n}"
+						},
+						{
+							"name": "Invalid date",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Quidditch game vs Slytherin\",\r\n    \"occursAt\": \"2000-01-01T11:00:00Z\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/trips/bb8c0228-1a68-41f4-beec-9455062f664d/activities",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"trips",
+										"bb8c0228-1a68-41f4-beec-9455062f664d",
+										"activities"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Occurs at date cannot be before trip start date\"\n}"
+						}
+					]
 				},
 				{
 					"name": "Get activities",
@@ -228,18 +832,132 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/trips/1a1d33fa-d1c6-4a84-9b94-ad659ff3d551/activities",
+							"raw": "{{baseUrl}}/trips/bb8c0228-1a68-41f4-beec-9455062f664d/activities",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"trips",
-								"1a1d33fa-d1c6-4a84-9b94-ad659ff3d551",
+								"bb8c0228-1a68-41f4-beec-9455062f664d",
 								"activities"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Get activities",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/trips/bb8c0228-1a68-41f4-beec-9455062f664d/activities",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"trips",
+										"bb8c0228-1a68-41f4-beec-9455062f664d",
+										"activities"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"activities\": [\n        {\n            \"date\": \"2024-07-01T00:00:00.000Z\",\n            \"activities\": []\n        },\n        {\n            \"date\": \"2024-07-02T00:00:00.000Z\",\n            \"activities\": []\n        },\n        {\n            \"date\": \"2024-07-03T00:00:00.000Z\",\n            \"activities\": [\n                {\n                    \"id\": \"4e4cbfba-dcfc-4f6a-a6bc-2311af28735c\",\n                    \"title\": \"Quidditch game vs Slytherin\",\n                    \"occursAt\": \"2024-07-02T11:00:00.000Z\",\n                    \"tripId\": \"bb8c0228-1a68-41f4-beec-9455062f664d\"\n                }\n            ]\n        },\n        {\n            \"date\": \"2024-07-04T00:00:00.000Z\",\n            \"activities\": []\n        },\n        {\n            \"date\": \"2024-07-05T00:00:00.000Z\",\n            \"activities\": []\n        },\n        {\n            \"date\": \"2024-07-06T00:00:00.000Z\",\n            \"activities\": []\n        },\n        {\n            \"date\": \"2024-07-07T00:00:00.000Z\",\n            \"activities\": []\n        },\n        {\n            \"date\": \"2024-07-08T00:00:00.000Z\",\n            \"activities\": []\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Remove activity",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/activities/b25ff29a-fad8-465a-ac29-0a66a458bd89",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"activities",
+								"b25ff29a-fad8-465a-ac29-0a66a458bd89"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Remove activity",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/activities/b25ff29a-fad8-465a-ac29-0a66a458bd89",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"activities",
+										"b25ff29a-fad8-465a-ac29-0a66a458bd89"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Activity not found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/activities/00000000-0000-0000-0000-000000000000",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"activities",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"message\": \"Activity not found\"\r\n}"
+						}
+					]
 				}
 			]
 		},
@@ -253,7 +971,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"Airbnb reservation\",\r\n    \"url\": \"https://airbnb.com/\"\r\n}",
+							"raw": "{\r\n    \"title\": \"Platform 9¾ tickets\",\r\n    \"url\": \"https://www.nationalrail.co.uk/live-trains/departures/london-kings-cross/\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -261,18 +979,101 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/trips/01a2c5d3-4b72-47fb-9d05-fcc8cab70edf/links",
+							"raw": "{{baseUrl}}/trips/bb8c0228-1a68-41f4-beec-9455062f664d/links",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"trips",
-								"01a2c5d3-4b72-47fb-9d05-fcc8cab70edf",
+								"bb8c0228-1a68-41f4-beec-9455062f664d",
 								"links"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Create link",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Platform 9¾ tickets\",\r\n    \"url\": \"https://www.nationalrail.co.uk/live-trains/departures/london-kings-cross/\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/trips/bb8c0228-1a68-41f4-beec-9455062f664d/links",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"trips",
+										"bb8c0228-1a68-41f4-beec-9455062f664d",
+										"links"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"linkId\": \"613705c9-7e4b-4678-9789-8ff77e28cd05\"\n}"
+						},
+						{
+							"name": "Invalid title",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Pla\",\r\n    \"url\": \"https://www.nationalrail.co.uk/live-trains/departures/london-kings-cross/\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/trips/bb8c0228-1a68-41f4-beec-9455062f664d/links",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"trips",
+										"bb8c0228-1a68-41f4-beec-9455062f664d",
+										"links"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Invalid input\",\n    \"errors\": {\n        \"title\": [\n            \"String must contain at least 4 character(s)\"\n        ]\n    }\n}"
+						}
+					]
 				},
 				{
 					"name": "Get links",
@@ -280,18 +1081,124 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/trips/01a2c5d3-4b72-47fb-9d05-fcc8cab70edf/links",
+							"raw": "{{baseUrl}}/trips/bb8c0228-1a68-41f4-beec-9455062f664d/links",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"trips",
-								"01a2c5d3-4b72-47fb-9d05-fcc8cab70edf",
+								"bb8c0228-1a68-41f4-beec-9455062f664d",
 								"links"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Get links",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/trips/bb8c0228-1a68-41f4-beec-9455062f664d/links",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"trips",
+										"bb8c0228-1a68-41f4-beec-9455062f664d",
+										"links"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"links\": [\n        {\n            \"id\": \"613705c9-7e4b-4678-9789-8ff77e28cd05\",\n            \"title\": \"Platform 9¾ tickets\",\n            \"url\": \"https://www.nationalrail.co.uk/live-trains/departures/london-kings-cross/\",\n            \"tripId\": \"bb8c0228-1a68-41f4-beec-9455062f664d\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Remove link",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/links/613705c9-7e4b-4678-9789-8ff77e28cd05",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"links",
+								"613705c9-7e4b-4678-9789-8ff77e28cd05"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Remove link",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/links/613705c9-7e4b-4678-9789-8ff77e28cd05",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"links",
+										"613705c9-7e4b-4678-9789-8ff77e28cd05"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Link not found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/links/00000000-0000-0000-0000-000000000000",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"links",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"message\": \"Link not found\"\r\n}"
+						}
+					]
 				}
 			]
 		}
