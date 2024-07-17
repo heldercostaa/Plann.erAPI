@@ -74,7 +74,7 @@ describe("Create activity", () => {
     expect(response.body.message).toBe("Trip not found");
   });
 
-  it("should be able to create a new activity if occursAt before trip start", async () => {
+  it("should not be able to create a new activity if occursAt is before trip start", async () => {
     const createTripResponse = await request(app.server)
       .post("/trips")
       .send({
@@ -94,11 +94,13 @@ describe("Create activity", () => {
         occursAt: dayjs().add(6, "day"),
       });
 
-    expect(response.statusCode).toBe(201);
-    expect(response.body.activityId).toBeDefined();
+    expect(response.statusCode).toBe(400);
+    expect(response.body.message).toBe(
+      "Occurs at date cannot be before trip start date"
+    );
   });
 
-  it("should not be able to create a new activity if occursAt after trip ends", async () => {
+  it("should not be able to create a new activity if occursAt is after trip ends", async () => {
     const createTripResponse = await request(app.server)
       .post("/trips")
       .send({
@@ -119,7 +121,9 @@ describe("Create activity", () => {
       });
 
     expect(response.statusCode).toBe(400);
-    expect(response.body.message).toBe("Invalid activity date");
+    expect(response.body.message).toBe(
+      "Occurs at date cannot be after trip end date"
+    );
   });
 
   it("should not be able to create a new activity with title less than 4 chars", async () => {

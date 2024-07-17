@@ -1,6 +1,5 @@
 import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
-import * as nodemailer from "nodemailer";
 import { z } from "zod";
 import { env } from "../env";
 import { ClientError } from "../errors/client-error";

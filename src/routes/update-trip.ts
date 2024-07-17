@@ -31,11 +31,13 @@ export async function updateTrip(app: FastifyInstance) {
       }
 
       if (startsAt && endsAt && dayjs(endsAt).isBefore(dayjs(startsAt))) {
-        throw new ClientError("Invalid trip end date");
+        throw new ClientError("New end date cannot be before new start date");
       }
 
-      if (endsAt && dayjs(endsAt).isBefore(trip.startsAt)) {
-        throw new ClientError("Invalid trip end date");
+      if (endsAt && dayjs(endsAt).isBefore(dayjs(trip.startsAt))) {
+        throw new ClientError(
+          "New end date cannot be before current start date"
+        );
       }
 
       await prisma.trip.update({

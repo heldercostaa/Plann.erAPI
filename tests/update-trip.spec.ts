@@ -136,7 +136,9 @@ describe("Update trip", () => {
       .send({ endsAt: dayjs().add(6, "day") });
 
     expect(response.statusCode).toBe(400);
-    expect(response.body.message).toEqual("Invalid trip end date");
+    expect(response.body.message).toEqual(
+      "New end date cannot be before current start date"
+    );
   });
 
   it("should not be able to update a trip if end date before start date", async () => {
@@ -161,6 +163,8 @@ describe("Update trip", () => {
       });
 
     expect(response.statusCode).toBe(400);
-    expect(response.body.message).toEqual("Invalid trip end date");
+    expect(response.body.message).toEqual(
+      "New end date cannot be before new start date"
+    );
   });
 });
