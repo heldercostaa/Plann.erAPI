@@ -11,9 +11,6 @@ export async function getMailClient() {
     pass = env.EMAIL_PASSWORD || pass;
   }
 
-  console.log("[DEBUG] user: ", user);
-  console.log("[DEBUG] pass: ", pass);
-
   const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 465,

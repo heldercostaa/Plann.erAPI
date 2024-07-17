@@ -66,7 +66,7 @@ export async function createTrip(app: FastifyInstance) {
 
       const mail = await getMailClient();
 
-      const message = await mail.sendMail({
+      await mail.sendMail({
         from: {
           name: "Plann.er Team",
           address: "hello@plann.er",
