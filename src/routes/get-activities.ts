@@ -26,7 +26,7 @@ export async function getActivities(app: FastifyInstance) {
       }
 
       const differenceInDaysBetweenTripStartAndEnd = dayjs(trip.endsAt).diff(
-        trip.startsAt,
+        dayjs(trip.startsAt),
         "days"
       );
 

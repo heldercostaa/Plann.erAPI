@@ -12,7 +12,7 @@ import { app } from "../src/app";
 import { env } from "../src/env";
 import { dayjs } from "../src/lib/dayjs";
 import { confirmParticipationEmail } from "../src/templates/confirmParticipationEmail";
-import resetDb from "./helpers/reset-db";
+import { resetDb } from "./helpers/reset-db";
 
 // Mock the nodemailer module
 const sendMailMock = vi.fn();
@@ -43,7 +43,7 @@ describe("Create invite", () => {
     const createTripResponse = await request(app.server)
       .post("/trips")
       .send({
-        destination: "Fortaleza, CE",
+        destination: "Paris, France",
         startsAt: dayjs().add(7, "day"),
         endsAt: dayjs().add(14, "day"),
         ownerName: "John Doe",
@@ -74,7 +74,7 @@ describe("Create invite", () => {
     const createTripResponse = await request(app.server)
       .post("/trips")
       .send({
-        destination: "Fortaleza, CE",
+        destination: "Paris, France",
         startsAt: dayjs().add(7, "day"),
         endsAt: dayjs().add(14, "day"),
         ownerName: "John Doe",
@@ -101,10 +101,10 @@ describe("Create invite", () => {
         address: "hello@plann.er",
       },
       to: "sarah.doe@mail.com",
-      subject: `Confirm your presence to Fortaleza, CE on ${formattedStartDate}`,
+      subject: `Confirm your presence to Paris, France on ${formattedStartDate}`,
       html: confirmParticipationEmail({
         confirmationUrl,
-        destination: "Fortaleza, CE",
+        destination: "Paris, France",
         formattedEndDate,
         formattedStartDate,
       }),
@@ -115,7 +115,7 @@ describe("Create invite", () => {
     const createTripResponse = await request(app.server)
       .post("/trips")
       .send({
-        destination: "Fortaleza, CE",
+        destination: "Paris, France",
         startsAt: dayjs().add(7, "day"),
         endsAt: dayjs().add(14, "day"),
         ownerName: "John Doe",

@@ -10,7 +10,7 @@ import {
 } from "vitest";
 import { app } from "../src/app";
 import { dayjs } from "../src/lib/dayjs";
-import resetDb from "./helpers/reset-db";
+import { resetDb } from "./helpers/reset-db";
 
 // Mock the nodemailer module
 const sendMailMock = vi.fn();
@@ -41,7 +41,7 @@ describe("Update trip", () => {
     const createTripResponse = await request(app.server)
       .post("/trips")
       .send({
-        destination: "Fortaleza, CE",
+        destination: "Paris, France",
         startsAt: dayjs().add(7, "day"),
         endsAt: dayjs().add(14, "day"),
         ownerName: "John Doe",
@@ -55,7 +55,7 @@ describe("Update trip", () => {
     const endsAt = dayjs().add(15, "day");
 
     const response = await request(app.server).put(`/trips/${tripId}`).send({
-      destination: "Jericoacoara",
+      destination: "Pari, Italy",
       startsAt,
       endsAt,
     });
@@ -64,9 +64,9 @@ describe("Update trip", () => {
     const getTripResponse = await request(app.server).get(`/trips/${tripId}`);
     const trip = getTripResponse.body.trip;
 
-    expect(trip.destination).toEqual("Jericoacoara");
-    expect(trip.startsAt).toEqual(startsAt.toISOString());
-    expect(trip.endsAt).toEqual(endsAt.toISOString());
+    expect(trip.destination).toEqual("Pari, Italy");
+    expect(trip.startsAt).toEqual(startsAt.startOf("date").toISOString());
+    expect(trip.endsAt).toEqual(endsAt.endOf("date").toISOString());
   });
 
   it("should not be able to update a trip if invalid trip id", async () => {
@@ -74,7 +74,7 @@ describe("Update trip", () => {
     const response = await request(app.server)
       .put(`/trips/${tripId}`)
       .send({
-        destination: "Jericoacoara",
+        destination: "Pari, Italy",
         startsAt: dayjs().add(6, "day"),
         endsAt: dayjs().add(15, "day"),
       });
@@ -99,7 +99,7 @@ describe("Update trip", () => {
     const createTripResponse = await request(app.server)
       .post("/trips")
       .send({
-        destination: "Fortaleza, CE",
+        destination: "Paris, France",
         startsAt: dayjs().add(7, "day"),
         endsAt: dayjs().add(14, "day"),
         ownerName: "John Doe",
@@ -121,7 +121,7 @@ describe("Update trip", () => {
     const createTripResponse = await request(app.server)
       .post("/trips")
       .send({
-        destination: "Fortaleza, CE",
+        destination: "Paris, France",
         startsAt: dayjs().add(7, "day"),
         endsAt: dayjs().add(14, "day"),
         ownerName: "John Doe",
@@ -145,7 +145,7 @@ describe("Update trip", () => {
     const createTripResponse = await request(app.server)
       .post("/trips")
       .send({
-        destination: "Fortaleza, CE",
+        destination: "Paris, France",
         startsAt: dayjs().add(7, "day"),
         endsAt: dayjs().add(14, "day"),
         ownerName: "John Doe",

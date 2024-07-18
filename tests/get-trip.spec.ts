@@ -10,7 +10,7 @@ import {
 } from "vitest";
 import { app } from "../src/app";
 import { dayjs } from "../src/lib/dayjs";
-import resetDb from "./helpers/reset-db";
+import { resetDb } from "./helpers/reset-db";
 
 // Mock the nodemailer module
 const sendMailMock = vi.fn();
@@ -38,13 +38,13 @@ describe("Get trip", () => {
   });
 
   it("should be able to get a trip with participants, activities and links", async () => {
-    const startsAt = dayjs().add(7, "day");
-    const endsAt = dayjs().add(14, "day");
+    const startsAt = dayjs().add(7, "day").startOf("day");
+    const endsAt = dayjs().add(14, "day").endOf("day");
 
     const createTripResponse = await request(app.server)
       .post("/trips")
       .send({
-        destination: "Fortaleza, CE",
+        destination: "Paris, France",
         startsAt,
         endsAt,
         ownerName: "John Doe",
@@ -68,7 +68,7 @@ describe("Get trip", () => {
     const response = await request(app.server).get(`/trips/${tripId}`);
     expect(response.body.trip).toEqual(
       expect.objectContaining({
-        destination: "Fortaleza, CE",
+        destination: "Paris, France",
         startsAt: startsAt.toISOString(),
         endsAt: endsAt.toISOString(),
         isConfirmed: false,

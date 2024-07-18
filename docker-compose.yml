@@ -54,7 +54,7 @@ services:
     build:
       context: .
       target: dev
-    command: npx prisma migrate dev
+    command: npx prisma migrate deploy
     environment:
       DB_URL: "postgresql://postgres:postgres@postgres:5432/planner"
     depends_on:

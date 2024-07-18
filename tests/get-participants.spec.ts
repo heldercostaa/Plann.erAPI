@@ -10,7 +10,7 @@ import {
 } from "vitest";
 import { app } from "../src/app";
 import { dayjs } from "../src/lib/dayjs";
-import resetDb from "./helpers/reset-db";
+import { resetDb } from "./helpers/reset-db";
 
 // Mock the nodemailer module
 const sendMailMock = vi.fn();
@@ -41,7 +41,7 @@ describe("Get participants", () => {
     const createTripResponse = await request(app.server)
       .post("/trips")
       .send({
-        destination: "Fortaleza, CE",
+        destination: "Paris, France",
         startsAt: dayjs().add(7, "day"),
         endsAt: dayjs().add(14, "day"),
         ownerName: "John Doe",

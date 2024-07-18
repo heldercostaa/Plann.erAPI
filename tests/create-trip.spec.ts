@@ -12,7 +12,7 @@ import { app } from "../src/app";
 import { env } from "../src/env";
 import { dayjs } from "../src/lib/dayjs";
 import { confirmTripEmail } from "../src/templates/confirmTripEmail";
-import resetDb from "./helpers/reset-db";
+import { resetDb } from "./helpers/reset-db";
 
 // Mock the nodemailer module
 const sendMailMock = vi.fn();
@@ -43,7 +43,7 @@ describe("Create trip", () => {
     const response = await request(app.server)
       .post("/trips")
       .send({
-        destination: "Fortaleza, CE",
+        destination: "Paris, France",
         startsAt: dayjs().add(7, "day"),
         endsAt: dayjs().add(14, "day"),
         ownerName: "John Doe",
@@ -78,7 +78,7 @@ describe("Create trip", () => {
     const response = await request(app.server)
       .post("/trips")
       .send({
-        destination: "Fortaleza, CE",
+        destination: "Paris, France",
         startsAt: dayjs().add(-1, "day"),
         endsAt: dayjs().add(14, "day"),
         ownerName: "John Doe",
@@ -94,7 +94,7 @@ describe("Create trip", () => {
     const response = await request(app.server)
       .post("/trips")
       .send({
-        destination: "Fortaleza, CE",
+        destination: "Paris, France",
         startsAt: dayjs().add(7, "day"),
         endsAt: dayjs().add(6, "day"),
         ownerName: "John Doe",
@@ -110,7 +110,7 @@ describe("Create trip", () => {
     const response = await request(app.server)
       .post("/trips")
       .send({
-        destination: "Fortaleza, CE",
+        destination: "Paris, France",
         startsAt: dayjs().add(7, "day"),
         endsAt: dayjs().add(6, "day"),
         ownerName: "John Doe",
@@ -129,7 +129,7 @@ describe("Create trip", () => {
     const response = await request(app.server)
       .post("/trips")
       .send({
-        destination: "Fortaleza, CE",
+        destination: "Paris, France",
         startsAt: dayjs().add(7, "day"),
         endsAt: dayjs().add(6, "day"),
         ownerName: "John Doe",
@@ -148,7 +148,7 @@ describe("Create trip", () => {
     const response = await request(app.server)
       .post("/trips")
       .send({
-        destination: "Fortaleza, CE",
+        destination: "Paris, France",
         startsAt: dayjs().add(7, "day"),
         endsAt: dayjs().add(14, "day"),
         ownerName: "John Doe",
@@ -170,12 +170,12 @@ describe("Create trip", () => {
         address: "john.doe@mail.com",
         name: "John Doe",
       },
-      subject: `Confirm you trip to Fortaleza, CE on ${formattedStartDate}`,
+      subject: `Confirm you trip to Paris, France on ${formattedStartDate}`,
       html: confirmTripEmail({
         confirmationUrl,
         formattedStartDate,
         formattedEndDate,
-        destination: "Fortaleza, CE",
+        destination: "Paris, France",
       }),
     });
   });
