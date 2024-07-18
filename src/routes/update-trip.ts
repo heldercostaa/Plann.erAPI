@@ -30,6 +30,9 @@ export async function updateTrip(app: FastifyInstance) {
         throw new ClientError("Trip not found");
       }
 
+      startsAt?.setUTCHours(0, 0, 0);
+      endsAt?.setUTCHours(23, 59, 59);
+
       if (startsAt && endsAt && dayjs(endsAt).isBefore(dayjs(startsAt))) {
         throw new ClientError("New end date cannot be before new start date");
       }

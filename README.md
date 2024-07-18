@@ -18,7 +18,7 @@ cp .env.test.example .env.test
 npm run dev
 ```
 
-## Postman
+## API Documentation
 
 Feel free to import the postman files under [`.postman`](.postman).
 

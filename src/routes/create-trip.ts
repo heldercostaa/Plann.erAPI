@@ -38,11 +38,14 @@ export async function createTrip(app: FastifyInstance) {
         throw new ClientError("Invalid trip end date");
       }
 
+      startsAt.setUTCHours(0, 0, 0);
+      endsAt.setUTCHours(23, 59, 59);
+
       const trip = await prisma.trip.create({
         data: {
           destination,
-          startsAt,
-          endsAt,
+          startsAt: startsAt,
+          endsAt: endsAt,
           participants: {
             createMany: {
               data: [
