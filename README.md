@@ -37,33 +37,39 @@
       </ul>
     </li>
     <li>
-      <a href="#features">Features</a>
+      <a href="#local-setup-instructions">Local Setup Instructions</a>
+    </li>
+    <li>
+      <a href="#api-documentation">API Documentation</a>
+    </li>
+    <li>
+      <a href="#tests">Tests</a>
       <ul>
-        <li><a href="#1-create-trip">1. Create trip</a></li>
-        <li><a href="#2-update-trip">2. Update trip</a></li>
-        <li><a href="#3-create-and-delete-activity">3. Create (and delete) activity</a></li>
-        <li><a href="#4-create-and-delete-link">4. Create (and delete) link</a></li>
-        <li><a href="#5-confirm-and-invite-guest">5. Confirm (and invite) guest</a></li>
+        <li><a href="#e2e-tests">E2E Tests</a></li>
+      </ul>
+      <ul>
+        <li><a href="#coverage-report">Coverage Report</a></li>
       </ul>
     </li>
     <li>
-      <a href="#local-setup-instructions">Local Setup Instructions</a>
+      <a href="#api-documentation">Extra commands</a>
+      <ul>
+        <li><a href="#database">Database</a></li>
+      </ul>
+      <ul>
+        <li><a href="#docker">Docker</a></li>
+      </ul>
     </li>
   </ol>
 </details>
 
 ## About The Project
 
-<table style="width: 100%;">
-  <tr style="border: none;">
-    <td style="width: 49%; border: none;">
-      <img src="https://raw.githubusercontent.com/heldercostaa/Plann.er/main/docs/1.%20Landing%20page.png" alt="Landing page" style="width: 100%; border-radius: 5px;"/>
-    </td>
-    <td style="width: 49%; padding-top: 25px; border: none;">
-      <img src="https://raw.githubusercontent.com/heldercostaa/Plann.er/main/docs/2.%20Trip%20page.png" alt="Trip page" style="width: 100%; border-radius: 5px;"/>
-    </td>
-  </tr>
-</table>
+<div>
+  <img src="https://raw.githubusercontent.com/heldercostaa/Plann.er/main/docs/1.%20Landing%20page.png" alt="Landing page" style="width: 49%; border-radius: 5px; margin-bottom: 20px;"/>
+  <img src="https://raw.githubusercontent.com/heldercostaa/Plann.er/main/docs/2.%20Trip%20page.png" alt="Trip page" style="width: 49%; border-radius: 5px; margin-top: 20px;"/>
+</div>
+<br />
 
 This is the backend for a personal project inspired by this [Figma design](<https://www.figma.com/design/8DfcJnIMg1sqhIbHqZVGsR/Plann.er-(Web)?node-id=3-376>). It aims to be a complete project, featuring several features such as 100% test coverage, a real PostgreSQL database, input validations, email notifications, error handling, and more.
 The goal is to explore and apply various technologies in a practical, production-like application. Note that the folder organization and structure are not entirely perfect due to the small scale of the application, so there are no services and the routing scenario is not ideal.
