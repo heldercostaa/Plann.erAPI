@@ -54,7 +54,7 @@ services:
     build:
       context: .
       target: dev
-    command: npx prisma migrate deploy
+    command: /bin/sh -c "npx prisma migrate deploy && tail -f /dev/null"
     environment:
       DB_URL: "postgresql://postgres:postgres@postgres:5432/planner"
     depends_on:
