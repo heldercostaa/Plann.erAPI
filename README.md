@@ -1,8 +1,8 @@
 <div align="center">
 
 ![Language](https://img.shields.io/badge/language-typescript-yellow?logo=ts-node&logoColor=white)
-[![Vercel Deploy](https://deploy-badge.vercel.app/vercel/planner-heldercosta)](https://plann-9zyysc409-heldercosta.vercel.app/)
-[![GitHub Workflow Status (main branch)](https://img.shields.io/github/actions/workflow/status/heldercostaa/Plann.er/main.yml?branch=main&logo=dependabot&logoColor=white)](https://github.com/heldercostaa/Plann.er)
+[![GitHub Workflow Status (main branch)](https://img.shields.io/github/actions/workflow/status/heldercostaa/Plann.erAPI/main.yml?branch=main&logo=dependabot&logoColor=white)](https://github.com/heldercostaa/Plann.erAPI)
+[![codecov](https://codecov.io/github/heldercostaa/Plann.erAPI/graph/badge.svg?token=AXVY2L9IAS)](https://codecov.io/github/heldercostaa/Plann.erAPI)
 [![Last commit](https://img.shields.io/github/last-commit/heldercostaa/Plann.er.svg?logo=github&logoColor=white)](https://github.com/heldercostaa/Plann.er/commits/main)
 [![Maintainer](https://img.shields.io/badge/maintainer-%40heldercostaa-teal?logo=superuser&logoColor=white)](https://github.com/heldercostaa)
 [![Linkedin](https://img.shields.io/badge/linkedin-blue.svg?logo=linkedin)](https://linkedin.com/in/heldercostaa/)

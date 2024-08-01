@@ -14,7 +14,7 @@ services:
       - .:/app/
       - nodemodules:/app/node_modules
     depends_on:
-      - migration
+      - migrations
     networks:
       - planner
 
@@ -38,7 +38,7 @@ services:
       timeout: 5s
 
   postgres-tests:
-    container_name: postgres-test
+    container_name: postgres-tests
     image: postgres:16.3-alpine
     restart: always
     ports:
@@ -50,7 +50,8 @@ services:
     networks:
       - planner
 
-  migration:
+  migrations:
+    container_name: migrations
     build:
       context: .
       target: dev
